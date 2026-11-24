@@ -1,3 +1,6 @@
+# PHP templates use .php, including short-tag fragments that resemble Hack.
+*.php linguist-language=PHP
+
 # Keep geographic datasets out of source-language percentages.
 php/js/province.js -linguist-detectable
 php/js/provinces.js -linguist-detectable
