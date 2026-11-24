@@ -1,0 +1,1166 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "a3aa5603a3b1e8c153b21a9acf819427742874ee",
+  "scope": "PHP demo reachable from documented index/setup/tree-report entries. Literal includes, AJAX URLs and dormant dispatcher targets are conservatively retained; external bookmarks are outside this analysis.",
+  "entries": [
+    "php/index.php",
+    "php/mock_db_setup.php",
+    "php/report/tree-chart.php"
+  ],
+  "retainedPhp": [
+    {
+      "path": "php/app/cityplan.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/cityplan_detail.php",
+      "via": "php/index.php"
+    },
+    {
+      "path": "php/app/cityplan_est.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/cityplan_est_detail.php",
+      "via": "php/app/cityplan_est.php"
+    },
+    {
+      "path": "php/app/cityplan_est_detail_pro.php",
+      "via": "php/app/cityplan_est_detail.php"
+    },
+    {
+      "path": "php/app/cityplan_m35.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/cityplan_m35X.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/cityplan_m35X_detail.php",
+      "via": "php/app/cityplan_m35X.php"
+    },
+    {
+      "path": "php/app/cityplan_m35X_detail_pro.php",
+      "via": "php/app/cityplan_m35X_detail.php"
+    },
+    {
+      "path": "php/app/destroy.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/export_page.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/export_page_pro.php",
+      "via": "php/app/export_page.php"
+    },
+    {
+      "path": "php/app/history_data.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/home.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/import_excel.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/manage.php",
+      "via": "php/index.php"
+    },
+    {
+      "path": "php/app/manageX.php",
+      "via": "php/report/tree-chart-cityplan.php"
+    },
+    {
+      "path": "php/app/manage_admin.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/manage_cityplan(pagination).php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/manage_cityplan.php",
+      "via": "php/app/manage_cityplan(pagination).php"
+    },
+    {
+      "path": "php/app/manage_consider.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/manage_group_note.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/manage_group_note_pro.php",
+      "via": "php/app/manage_group_note.php"
+    },
+    {
+      "path": "php/app/manage_note(new).php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/manage_note.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/manage_plan.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/manage_plan_pro.php",
+      "via": "php/app/manage_plan.php"
+    },
+    {
+      "path": "php/app/manage_plan_proX.php",
+      "via": "php/app/manage_plan.php"
+    },
+    {
+      "path": "php/app/manage_province.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/manage_step.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/manage_stepsub.php",
+      "via": "php/app/manage_step.php"
+    },
+    {
+      "path": "php/app/manage_substep.php",
+      "via": "php/app/manage_step.php"
+    },
+    {
+      "path": "php/app/mytest.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/note.php",
+      "via": "php/app/manage_step.php"
+    },
+    {
+      "path": "php/app/pro_admin.php",
+      "via": "php/app/manage_admin.php"
+    },
+    {
+      "path": "php/app/pro_cityplanY.php",
+      "via": "php/report/manage_cityplanX-ver2.php"
+    },
+    {
+      "path": "php/app/pro_cityplan_lating.php",
+      "via": "php/report/manage_cityplanX-ver2.php"
+    },
+    {
+      "path": "php/app/pro_consider.php",
+      "via": "php/app/manage_consider.php"
+    },
+    {
+      "path": "php/app/pro_csd.php",
+      "via": "php/app/show_csd.php"
+    },
+    {
+      "path": "php/app/pro_history.php",
+      "via": "php/app/history_data.php"
+    },
+    {
+      "path": "php/app/pro_log.php",
+      "via": "php/app/show_log.php"
+    },
+    {
+      "path": "php/app/pro_province.php",
+      "via": "php/app/manage_province.php"
+    },
+    {
+      "path": "php/app/pro_unset.php",
+      "via": "php/app/unset_data.php"
+    },
+    {
+      "path": "php/app/ptt.php",
+      "via": "php/app/manage_cityplan(pagination).php"
+    },
+    {
+      "path": "php/app/report.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/report_a.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/search.php",
+      "via": "php/function_js.js"
+    },
+    {
+      "path": "php/app/search_cityplan.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/search_data.php",
+      "via": "php/app/search.php"
+    },
+    {
+      "path": "php/app/show_csd.php",
+      "via": "php/report/manage_cityplanX-ver2.php"
+    },
+    {
+      "path": "php/app/show_extra.php",
+      "via": "php/index.php"
+    },
+    {
+      "path": "php/app/show_extra_keth.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/show_keth.php",
+      "via": "php/app/show_extra_keth.php"
+    },
+    {
+      "path": "php/app/show_log.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/show_page_park-keth.php",
+      "via": "php/app/show_extra.php"
+    },
+    {
+      "path": "php/app/show_page_park-keth_pro.php",
+      "via": "php/app/show_page_park-keth.php"
+    },
+    {
+      "path": "php/app/show_park.php",
+      "via": "php/app/show_extra.php"
+    },
+    {
+      "path": "php/app/show_step.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/status_currentx.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/status_currentx_pro.php",
+      "via": "php/app/status_currentx.php"
+    },
+    {
+      "path": "php/app/status_date.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/status_law.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/status_operate-law_pro.php",
+      "via": "php/app/status_operate.php"
+    },
+    {
+      "path": "php/app/status_operate.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/step.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/substep.php",
+      "via": "php/app/step.php"
+    },
+    {
+      "path": "php/app/t1.php",
+      "via": "php/app/report.php"
+    },
+    {
+      "path": "php/app/t2.php",
+      "via": "php/app/report.php"
+    },
+    {
+      "path": "php/app/t3.php",
+      "via": "php/app/report.php"
+    },
+    {
+      "path": "php/app/t4.php",
+      "via": "php/app/report.php"
+    },
+    {
+      "path": "php/app/unset_data.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/app/uploadcityplanimg.php",
+      "via": "php/app/cityplan_detail.php"
+    },
+    {
+      "path": "php/app/uploadcityplanimgx.php",
+      "via": "php/app/cityplan_detail.php"
+    },
+    {
+      "path": "php/apps/company_project.php",
+      "via": "php/apps/manage_company.php"
+    },
+    {
+      "path": "php/apps/index_x(pro).php",
+      "via": "php/apps/manage_plan.php"
+    },
+    {
+      "path": "php/apps/manage_company(pro).php",
+      "via": "php/apps/manage_company.php"
+    },
+    {
+      "path": "php/apps/manage_company.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/apps/manage_hardware(pro).php",
+      "via": "php/apps/manage_hardware.php"
+    },
+    {
+      "path": "php/apps/manage_hardware.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/apps/manage_plan.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/apps/manage_project(pro).php",
+      "via": "php/apps/manage_project.php"
+    },
+    {
+      "path": "php/apps/manage_project.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/apps/manage_rce(pro).php",
+      "via": "php/apps/manage_rce.php"
+    },
+    {
+      "path": "php/apps/manage_rce.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/apps/plan_equipment(pro).php",
+      "via": "php/apps/plan_show(user).php"
+    },
+    {
+      "path": "php/apps/plan_equipment.php",
+      "via": "php/apps/manage_plan.php"
+    },
+    {
+      "path": "php/apps/plan_load_eqm.php",
+      "via": "php/apps/plan_equipment.php"
+    },
+    {
+      "path": "php/apps/plan_show(user).php",
+      "via": "php/apps/show_plan.php"
+    },
+    {
+      "path": "php/apps/plan_show2.php",
+      "via": "php/apps/plan_equipment.php"
+    },
+    {
+      "path": "php/apps/project_equipment(pro).php",
+      "via": "php/apps/project_load_equipment.php"
+    },
+    {
+      "path": "php/apps/project_equipment.php",
+      "via": "php/apps/manage_project.php"
+    },
+    {
+      "path": "php/apps/project_load_equipment.php",
+      "via": "php/apps/project_equipment.php"
+    },
+    {
+      "path": "php/apps/rce_data.php",
+      "via": "php/apps/manage_rce.php"
+    },
+    {
+      "path": "php/apps/search_eqm.php",
+      "via": "php/function_js.js"
+    },
+    {
+      "path": "php/apps/show_plan.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/apps/show_rce.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/chatbot.php",
+      "via": "php/index.php"
+    },
+    {
+      "path": "php/index.php",
+      "via": "documented-entry"
+    },
+    {
+      "path": "php/js/function_db.php",
+      "via": "php/report/tree-chart.php"
+    },
+    {
+      "path": "php/js/function_php.php",
+      "via": "php/app/show_log.php"
+    },
+    {
+      "path": "php/map.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/map/map_province.php",
+      "via": "php/map_pro.php"
+    },
+    {
+      "path": "php/map/map_province_pro.php",
+      "via": "php/map/map_province.php"
+    },
+    {
+      "path": "php/map_pro.php",
+      "via": "php/map.php"
+    },
+    {
+      "path": "php/mock_db_setup.php",
+      "via": "documented-entry"
+    },
+    {
+      "path": "php/nav1.php",
+      "via": "php/index.php"
+    },
+    {
+      "path": "php/report/budget-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/cityplan-chart.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/cityplan-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/dashboard_kana.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/report/eec-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/effective-chart.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/effective-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/m35a-chart.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/m35a-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/m35b-chart.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/m35b-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/manage_cityplanX-stage.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/report/manage_cityplanX-ver2.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/report/operate-chart.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/operate-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/operate2-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/operate_plan_show.php",
+      "via": "php/report/manage_cityplanX-ver2.php"
+    },
+    {
+      "path": "php/report/pro_cityplanX-stage.php",
+      "via": "php/report/manage_cityplanX-stage.php"
+    },
+    {
+      "path": "php/report/pro_result.php",
+      "via": "php/report/show_result.php"
+    },
+    {
+      "path": "php/report/pro_step_noteY.php",
+      "via": "php/report/table_step_noteY.php"
+    },
+    {
+      "path": "php/report/report_another.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/report/report_another_pro.php",
+      "via": "php/report/report_another.php"
+    },
+    {
+      "path": "php/report/show_detail_x.php",
+      "via": "php/app/show_extra.php"
+    },
+    {
+      "path": "php/report/show_detail_x_pro.php",
+      "via": "php/report/show_detail_x.php"
+    },
+    {
+      "path": "php/report/show_optx.php",
+      "via": "php/report/table_SSR_chart_opt.php"
+    },
+    {
+      "path": "php/report/show_result.php",
+      "via": "php/report/table_step_noteY.php"
+    },
+    {
+      "path": "php/report/stage-chart.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/stage-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/status-chart.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/status-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/step-chart.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/step-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/step2-chart.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/step2-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/table_SSR_chart_opt.php",
+      "via": "php/report/pro_result.php"
+    },
+    {
+      "path": "php/report/table_step_note.php",
+      "via": "php/app/history_data.php"
+    },
+    {
+      "path": "php/report/table_step_noteY.php",
+      "via": "php/report/tree-chart-cityplan.php"
+    },
+    {
+      "path": "php/report/tree-chart-cityplan.php",
+      "via": "php/report/tree-chart.php"
+    },
+    {
+      "path": "php/report/tree-chart-eva.php",
+      "via": "php/report/tree-chart.php"
+    },
+    {
+      "path": "php/report/tree-chart-pro_cityplan.php",
+      "via": "php/report/tree-chart-cityplan.php"
+    },
+    {
+      "path": "php/report/tree-chart.php",
+      "via": "documented-entry"
+    },
+    {
+      "path": "php/report/tree-chart2.php",
+      "via": "php/nav1.php"
+    },
+    {
+      "path": "php/report/type-chart.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/type-table.php",
+      "via": "php/app/t2.php"
+    },
+    {
+      "path": "php/report/user_step_note.php",
+      "via": "php/report/show_result.php"
+    },
+    {
+      "path": "php/statusCityplan.php",
+      "via": "php/app/show_extra.php"
+    }
+  ],
+  "archived": [
+    {
+      "path": "php/app/admin.php",
+      "bytes": 13397,
+      "sha256": "b197b4c25a633f8c667a5501103f20b58e1c6372da263ce98aa01adc2a1d9654",
+      "blob": "745857d7155e20bd82a5f06b87c35bd80974d287",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/cityplan_step.php",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/date_test.php",
+      "bytes": 1405,
+      "sha256": "44492710c865757b74394a83cbeadd69b06cd445c35abc66c43725974ff65f4e",
+      "blob": "9aedd33e69fe82d960da0851ae7d9a107169b0f7",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/function_pagin.php",
+      "bytes": 15,
+      "sha256": "21d478a5cd47efa628f0ec8c86d89b777c990e66e7a055931f809b6d07ace1ba",
+      "blob": "b17ec1d8798ebf0f49600f03344d282549756d42",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/lating.php",
+      "bytes": 692,
+      "sha256": "0e2a11b802330e35db94e33097e79c2abe759072e27080c897f2c5df357ec166",
+      "blob": "64bd43a9c003a1dd1df5123a59c37421e0393246",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/manage_cityplanP.php",
+      "bytes": 24436,
+      "sha256": "41b642d6a418e3b1c5238173b9c0f9822a105439d4db86aab2cbda93d11e3e2b",
+      "blob": "440eb843b14d62b4e400942030f999d0b3ca865f",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/pro_cityplan.php",
+      "bytes": 17698,
+      "sha256": "1dd98806b82a7089fc33569f446a899833fe23a97a390e9f13423f46013c569c",
+      "blob": "f850c929b91a1cfc38d8a03b832af16090db53ff",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/pro_cityplanX.php",
+      "bytes": 18076,
+      "sha256": "093e1e14a640f3bcd11742d6812f648dfa68bdf206a0251d804cd8869e9c6d71",
+      "blob": "0f2761861bffa6b8dc3c9ea2890d21fad4f69e8f",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/pt.php",
+      "bytes": 507,
+      "sha256": "c08cefdac62df9d3d7c0dcf2cee42126a9cf2382b11bb00b9f40eaffbc0d1626",
+      "blob": "b6676632ae5f9c9e2044c9624a4d935ccbb83d42",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/show_page_park_detail.php",
+      "bytes": 25,
+      "sha256": "d0b08eae310922b817370a3dc7473d2ae8eef6f0047ed273eb5e9692a7235dc9",
+      "blob": "5f94ed3df2477fe70e510994aff0e3cb93efc20c",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/status_current_pro.php",
+      "bytes": 6055,
+      "sha256": "8dfcfe8e7dff829af4a863010872b5aeb16f0a3e6ae8bd899df14d6ac219f26e",
+      "blob": "f45bd8b57d06195b5e6c02acad647adaf1d576bb",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/status_current.php",
+      "bytes": 4328,
+      "sha256": "4d8712b73914e5f10e5652f2ddc32df1a4a63d6e5b323652796b2e83e1de8f5e",
+      "blob": "2abe4ed6c3d960bccb465e5d0ece30d9802c4533",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/super_admin.php",
+      "bytes": 13398,
+      "sha256": "67d6be04c27bf731158d1652c97ed26ff331cb2ec9abd225db29dfd6d24f2188",
+      "blob": "c4f2face7ef02ced8f4f8e2845c77d902e7e0e06",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/app/user.php",
+      "bytes": 13397,
+      "sha256": "472d90773403325274fa3a5c62b0886f6b7b62d06664b6bdd9abe60d48d5ca9e",
+      "blob": "71b3b7bee03ad411fa9799442c72a6665f819008",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/demo_m1.php",
+      "bytes": 11817,
+      "sha256": "0114c3e47299be85bdbe5d794d75ccca4aa1e22105e53b8aea9d57040519b3ff",
+      "blob": "ce9b9ca2aebec22938b8c153c484c6cddc60f1f3",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/demo_m1(orgin).php",
+      "bytes": 6188,
+      "sha256": "c4302cbef54dfa14f7e1e7968284854da7d34505f082801e3596f9d40caa0394",
+      "blob": "17dfe55c9b714b21522636a70086a74bd7c2324b",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/home.php",
+      "bytes": 442,
+      "sha256": "25ea6eef621e97548103c73a3ccd181fd940c9a4320485e73d42d4c9b75ba651",
+      "blob": "eb1b78df866da6076f881d5a52e797b4f6e0ce45",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/plan_show.php",
+      "bytes": 53147,
+      "sha256": "2407383c3ca20921e834a3297841475d8e8a63284ecb2eca337981b3c0ffe455",
+      "blob": "9173bc0c4b3f677fe27483d8acfb5f093cb2d0d4",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/plan_show(origin).php",
+      "bytes": 53147,
+      "sha256": "2407383c3ca20921e834a3297841475d8e8a63284ecb2eca337981b3c0ffe455",
+      "blob": "9173bc0c4b3f677fe27483d8acfb5f093cb2d0d4",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/project_load_equipment(origin).php",
+      "bytes": 7949,
+      "sha256": "3d1b895a11e2720fb5605515daa3c0d0d1d30835ac903ff77aa7daa06635bf22",
+      "blob": "6d32218d6984e474a03ccca85e9a049d7f667519",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/project_report.php",
+      "bytes": 3404,
+      "sha256": "7e4f138e406ea52c215bb1020f0fc158afb3887f485543d080f53d5aae51f4dd",
+      "blob": "b5bfde3b3e64d386156915c9ff12e9541b161996",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/project_report2.php",
+      "bytes": 12325,
+      "sha256": "c781dc0a993dfc1f68b9f84a910f391df94c7daae595adb8b10846e12ad2d2fc",
+      "blob": "1fb9bb7db75a87752ac150938654e3e469499494",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/show_company.php",
+      "bytes": 2815,
+      "sha256": "4c17e5c434f18da1b3a10e4981871a8771aa995fa65d608cf793a2d3b321254c",
+      "blob": "52190149e95a5724bfb993c71de6ca041bc0671c",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/show_hardware.php",
+      "bytes": 8490,
+      "sha256": "5b11c3d465d6fdfe44c97b249b82a8d086b9e3a9cb383a9d18f5fb27aaeffd09",
+      "blob": "60837a0fe2d3934fd0b770f4383b08dcfe479e4d",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/show_project.php",
+      "bytes": 5950,
+      "sha256": "09ff4e1151ad29f68b515e6f82530615b7ba3ed32df97489b48d170dc168e279",
+      "blob": "ba88ecef25a54e3d0834352753999b0baab74d57",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/test_array_sql.php",
+      "bytes": 381,
+      "sha256": "0a1d69abe9f2ced308a06d6268a9c23e233e5ca5ab9c82994ce83a804e64eeae",
+      "blob": "59f4ba70a2417414cc0cc498811fc2ca3c96dab8",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/apps/test_array_sql2.php",
+      "bytes": 592,
+      "sha256": "3fdf6901b94039fccb0ad5bd5665b9dd6f82551c5c332b22158c8a17a06c4d11",
+      "blob": "ec81031e95a5815efec9d27f8dc6de12c206ced8",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/appx/show_cityplan.php",
+      "bytes": 1,
+      "sha256": "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a",
+      "blob": "08b9811c98f0d90dbacc006ddcd80c5945b9ea55",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/c-admin.php",
+      "bytes": 5828,
+      "sha256": "dd89e585353e78dcb162bd34086f0f0bf7a25e662fec45030b32ae6c70562de6",
+      "blob": "a6eee0f912550ffbbc2631f5d57315b076927f0b",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/c-admin1.php",
+      "bytes": 5829,
+      "sha256": "b2034f189d8505f80dc5d1b66a19bdbf1e0993487eb794fc9d8d854b4c3c2348",
+      "blob": "0bf493992b46b8d315ce378d5f2a45b58a446814",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/c-super_admin.php",
+      "bytes": 5829,
+      "sha256": "d059176a233918eaa5e6db763c11643a62588d9ce26d18be03c105cdd986305a",
+      "blob": "b65da15392bb5a31d4153a6b69f86b53e0e9ad3e",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/img/loading-bar-test.php",
+      "bytes": 2391,
+      "sha256": "8cf0da64aaad3b85771bec653cd2efb8b129045b0cf91671af31e233c8503a0d",
+      "blob": "bb4aef0246f555d1be11cfa1dfe911880804442e",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/js/provinces.php",
+      "bytes": 1636499,
+      "sha256": "d14ca424182f2def9960b6f4daba61bd1aa8b818abd5186e5c410b19c55d15b2",
+      "blob": "77411f59e2510af21257f733a518fa7c217ac988",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/js/script.php",
+      "bytes": 761,
+      "sha256": "52c9c6ce6c7b8ddb7f5c634b80cfe8cf54cd798fd3d0aaf6dcd9c8259a469912",
+      "blob": "e8026617c106ca281ad0c55f2b8c6622b900fffe",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/map/function_external.php",
+      "bytes": 144,
+      "sha256": "906d20de3794dc51665b0ae0533c2206ace54f8799f528f7f651f99a2a679231",
+      "blob": "534d022ccac64ad0c9bc2e45fb28833adfabe2f1",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": [
+        "map"
+      ]
+    },
+    {
+      "path": "php/nav2.php",
+      "bytes": 9060,
+      "sha256": "982c84c95e1dc27d0f922092815029e5ac8f3c55b3233ab843d7899a73bc2814",
+      "blob": "19925b8530ca6f44d5dde61a6cec1e8cb3cf799d",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/navA.php",
+      "bytes": 10550,
+      "sha256": "9273b5df55c7d1b2969d3a15fd6123b13ad52c99bd1ce67fec10c1b8f9bb6e62",
+      "blob": "85ab00a3e41bfe9ffec79cf94241090b40d043eb",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/navA1.php",
+      "bytes": 10550,
+      "sha256": "6f69e8414e82f00a7ede6c196305098d4f9f1397ffa9ed00bb32635b5e6dfca1",
+      "blob": "7af4dc1eb47a52e441e904f8441a5f8c56dabb90",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/navSA.php",
+      "bytes": 10550,
+      "sha256": "8aa36b08b86a920b52229474fc5973dc36ce785b1665c6f51f0a2fc26dae5e9f",
+      "blob": "4daa93a1852cce797d7b7bd1226a3abd8b1ecb14",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/navU.php",
+      "bytes": 10558,
+      "sha256": "85b80a33c43e8595707308ca6f27b6b1cfdb7a03b14fd18b4b3347b6491e69f1",
+      "blob": "4381ad11f18beb0d9e1ce06d6d7c8ec0cace8a18",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/atest.php",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/cityplan-oldchart.php",
+      "bytes": 3052,
+      "sha256": "e4847b3475a05a42d260183d9b88f5a16ef98e220ddec86aa7d37fdcc283dfa5",
+      "blob": "164e7b10898ea374b000afa2c41322ecb1e7dad2",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/convertnote.php",
+      "bytes": 1554,
+      "sha256": "cd504fd5bd20235a0f6cfd42f4213682c9506f48d0363ecf5c2d2c6d075c7099",
+      "blob": "54f0163b71261f5110bcbffeabed1cb1991611d2",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/manage_cityplanX-ver2(origin).php",
+      "bytes": 25184,
+      "sha256": "49c9aba0da9bb4e706df09c4094d8540c574b8c4c398c588de68f7ea135799fc",
+      "blob": "3e3e2dbffc3ff2d239305f88d70cf7bd6d3300d5",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/manage_cityplanY.php",
+      "bytes": 52206,
+      "sha256": "c06977a62d92bf15b9647f8b5050fef2f2fec9d0de30385efb5886a57f18c1d2",
+      "blob": "a9c41a46e347ddf86b0748ad9974e510e1a78b5b",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/pro_result-backup.php",
+      "bytes": 61682,
+      "sha256": "900bf779565d43d2aa8a69f8d21f969326d07a27e6f852566e8d39fc87e5325c",
+      "blob": "8d2b290561d468cada8352cd3246bc07b2312752",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": [
+        "status",
+        "stage",
+        "step",
+        "step2",
+        "cityplan"
+      ]
+    },
+    {
+      "path": "php/report/pro_table_step_noteX.php",
+      "bytes": 8965,
+      "sha256": "3ce87de92ec3991f234f7eff0fcc01bc7276a69eca64e132cd7b26abbc805056",
+      "blob": "c1364a8d8f2eb6558a4cbcc595f3cf5c0f0b5e4d",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/pro_table_step_noteXU.php",
+      "bytes": 8173,
+      "sha256": "fd522cd6d85fd81ba5af8b0602ae88c67b92accab9541bc9c56f556e8bc1b68a",
+      "blob": "2ac06c5b84479371e7d878e461be1d79a3c241d9",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/table_SSR_chart_aff.php",
+      "bytes": 1851,
+      "sha256": "8e1826b4d63f714b4f5f9f1d78c3b443c7e304b9ed27a4aa23cd1f5c0984c9c1",
+      "blob": "fc5abea0289e06fb05a13baabbaa1f5f2f20cf1a",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/table_SSR_chart_scope.php",
+      "bytes": 1753,
+      "sha256": "9cde317c35da635f6e5c50aa649a3fdc612b99b0081463aa4f87b34fb8af2595",
+      "blob": "1d4a42d0be4130c2f76d429e3e36ccb673ad8b31",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/table_SSR.php",
+      "bytes": 62209,
+      "sha256": "6c021c93f436111d5057b47bf31bbbffc877dea72bf87c88ec0e6f3af64ae5c7",
+      "blob": "b63f193af1be27fd9e256865005df3260b8f3481",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": [
+        "cityplan",
+        "type",
+        "step",
+        "step2",
+        "status",
+        "stage",
+        "effective",
+        "operate",
+        "operate1_sub",
+        "operate2",
+        "operate2_sub",
+        "status_effective"
+      ]
+    },
+    {
+      "path": "php/report/table_SSR2.php",
+      "bytes": 34136,
+      "sha256": "24651cd79018a44b9815b2b4c3735f92fef718f42e3e1b58e5e423a0cf3abab0",
+      "blob": "7f84c5f7ddd0c2c002c91807e3635b4e1edb2c42",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": [
+        "cityplan",
+        "type",
+        "step",
+        "status",
+        "stage",
+        "effective",
+        "operate",
+        "status_effective"
+      ]
+    },
+    {
+      "path": "php/report/table_step_noteX.php",
+      "bytes": 24896,
+      "sha256": "41ce0d9bb0dab497f5fc1229104f757a0d2ffa4dc0a4c5748ff5f0d3c711df72",
+      "blob": "a176d73bdac1e54d1d2e92c6d511505056c9f4a9",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/tree-chart-pro_cityplan-backup.php",
+      "bytes": 49323,
+      "sha256": "6e65b2006823cf50b8d68d3cfaf0d99ab8b6df78d8b40562e35578665630f59a",
+      "blob": "f3fe6b81238e07a171eb73412e475677467bf085",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/report/tree-chart3.php",
+      "bytes": 59021,
+      "sha256": "faa60bff4849438ae55a81cd0897b9663b384dec3404f49d17a4e2a9ebe0d617",
+      "blob": "a68cbb74a4adafc82da246b9405fc16be7b8dd0b",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/sun.php",
+      "bytes": 30,
+      "sha256": "93ffdb575e789786da7615acf5a30b6bc4ec08c5a3881d2dd6400fccb57bd6c3",
+      "blob": "142ee6f24b921c7b45224d96840f6bea7322e5d2",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/tree_chart2/index.php",
+      "bytes": 11509,
+      "sha256": "8d9b578de2823ff87f6246f6c23aa499551e1a83f325ba71d7414ba0dfa06539",
+      "blob": "eb3037e682f4d9d976fc1e456516f339d60808a4",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    },
+    {
+      "path": "php/tree_chart2/new 1.php",
+      "bytes": 113,
+      "sha256": "923a267dd3a680deccfb449d1add73c3c92077db0c2f049f6704f7939c27d5cd",
+      "blob": "881fc4682869c01a3635a195a4e60841ede218b4",
+      "reason": "No reference path from documented entries, including conservative traversal of dormant JS dispatchers.",
+      "legacyEvents": []
+    }
+  ],
+  "dynamicReferences": [
+    {
+      "caller": "php/app/t2.php",
+      "expression": "report/*-table.php",
+      "targets": [
+        "php/report/budget-table.php",
+        "php/report/cityplan-table.php",
+        "php/report/eec-table.php",
+        "php/report/effective-table.php",
+        "php/report/m35a-table.php",
+        "php/report/m35b-table.php",
+        "php/report/operate-table.php",
+        "php/report/operate2-table.php",
+        "php/report/stage-table.php",
+        "php/report/status-table.php",
+        "php/report/step-table.php",
+        "php/report/step2-table.php",
+        "php/report/type-table.php"
+      ]
+    },
+    {
+      "caller": "php/app/t2.php",
+      "expression": "report/*-chart.php",
+      "targets": [
+        "php/report/cityplan-chart.php",
+        "php/report/effective-chart.php",
+        "php/report/m35a-chart.php",
+        "php/report/m35b-chart.php",
+        "php/report/operate-chart.php",
+        "php/report/stage-chart.php",
+        "php/report/status-chart.php",
+        "php/report/step-chart.php",
+        "php/report/step2-chart.php",
+        "php/report/tree-chart.php",
+        "php/report/type-chart.php"
+      ]
+    }
+  ],
+  "caseMismatches": [
+    {
+      "caller": "php/nav1.php",
+      "literal": "app/cityplan_m35x.php",
+      "actual": "php/app/cityplan_m35X.php"
+    },
+    {
+      "caller": "php/nav1.php",
+      "literal": "app/cityplan_m35x.php",
+      "actual": "php/app/cityplan_m35X.php"
+    }
+  ]
+}

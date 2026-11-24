@@ -15,7 +15,9 @@
     "test:api": "npm --prefix server run build && node scripts/check-api.mjs",
     "test:operations": "npm --prefix server run build && node --test server/dist/tests/*.test.js",
     "migration:audit": "npm --prefix server run build && node server/dist/migration/audit.js --write",
-    "test:ui": "npm run build && node scripts/check-ui.mjs"
+    "test:ui": "npm run build && node scripts/check-ui.mjs",
+    "audit:php": "node scripts/audit-php-runtime.mjs --write",
+    "test:php": "node scripts/check-php-demo.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"

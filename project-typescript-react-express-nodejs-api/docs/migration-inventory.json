@@ -1,6 +1,9 @@
 {
-  "schemaVersion": 1,
-  "scope": "Tracked PHP sources in this repository; alternate layouts share functional replacements. This inventory links source files to implementations; behavior is verified separately by API, domain and browser tests.",
+  "schemaVersion": 2,
+  "scope": "Published PHP sources plus historical sources explicitly archived in php/docs/runtime-files.json. Source status distinguishes current files from historical fingerprints; alternate layouts share functional replacements. Behavior is verified separately by API, domain and browser tests.",
+  "archivedSourceCommit": "a3aa5603a3b1e8c153b21a9acf819427742874ee",
+  "publishedPhpFiles": 152,
+  "archivedPhpFiles": 58,
   "totalPhpFiles": 210,
   "functionalFiles": 202,
   "referenceOrNonfunctionalFiles": 8,
@@ -151,6 +154,7 @@
   "files": [
     {
       "source": "php/app/admin.php",
+      "sourceStatus": "archived-unused",
       "sha256": "b197b4c25a633f8c667a5501103f20b58e1c6372da263ce98aa01adc2a1d9654",
       "classification": "functional-replacement",
       "featureIds": [
@@ -160,6 +164,7 @@
     },
     {
       "source": "php/app/cityplan.php",
+      "sourceStatus": "published",
       "sha256": "8935943fd38b41f00ee32e07adf9fbd858ab33f30800058821995b1f11653d67",
       "classification": "functional-replacement",
       "featureIds": [
@@ -169,6 +174,7 @@
     },
     {
       "source": "php/app/cityplan_detail.php",
+      "sourceStatus": "published",
       "sha256": "f5dfba27fea2adb45087ab60915ba91685d989870ae7c937a7e0d700838df4ae",
       "classification": "functional-replacement",
       "featureIds": [
@@ -178,6 +184,7 @@
     },
     {
       "source": "php/app/cityplan_est.php",
+      "sourceStatus": "published",
       "sha256": "6d2703be1cac19660c22cdbe3e28dc53e3bc0893409a8b32246d0e6a2ddb06df",
       "classification": "functional-replacement",
       "featureIds": [
@@ -187,6 +194,7 @@
     },
     {
       "source": "php/app/cityplan_est_detail.php",
+      "sourceStatus": "published",
       "sha256": "deaf3633c35b4721b787f48f325a5b6c71504b53564fa4ba65c253f78ec758d4",
       "classification": "functional-replacement",
       "featureIds": [
@@ -196,6 +204,7 @@
     },
     {
       "source": "php/app/cityplan_est_detail_pro.php",
+      "sourceStatus": "published",
       "sha256": "ee1c0fccac9d1a2e41944b9c98c72528dbc9864c0f6e1b3411224bc90e10bc7d",
       "classification": "functional-replacement",
       "featureIds": [
@@ -205,6 +214,7 @@
     },
     {
       "source": "php/app/cityplan_m35.php",
+      "sourceStatus": "published",
       "sha256": "1ad41ee1bae4e7edab3dfc87e00eaa15a2dd7711e47efb088b9db65ef56c3f3d",
       "classification": "functional-replacement",
       "featureIds": [
@@ -214,6 +224,7 @@
     },
     {
       "source": "php/app/cityplan_m35X.php",
+      "sourceStatus": "published",
       "sha256": "f031ae53bae7d4f3cb8ac6b16d25667e22c16001a68fbb007b401e0e9fe3165e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -223,6 +234,7 @@
     },
     {
       "source": "php/app/cityplan_m35X_detail.php",
+      "sourceStatus": "published",
       "sha256": "8a3edae4c7f26c95d95e2cb0a4ab2af371e761cc80593a97b033957e8b46e690",
       "classification": "functional-replacement",
       "featureIds": [
@@ -232,6 +244,7 @@
     },
     {
       "source": "php/app/cityplan_m35X_detail_pro.php",
+      "sourceStatus": "published",
       "sha256": "ee1c0fccac9d1a2e41944b9c98c72528dbc9864c0f6e1b3411224bc90e10bc7d",
       "classification": "functional-replacement",
       "featureIds": [
@@ -241,6 +254,7 @@
     },
     {
       "source": "php/app/cityplan_step.php",
+      "sourceStatus": "archived-unused",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "classification": "functional-replacement",
       "featureIds": [
@@ -250,6 +264,7 @@
     },
     {
       "source": "php/app/date_test.php",
+      "sourceStatus": "archived-unused",
       "sha256": "44492710c865757b74394a83cbeadd69b06cd445c35abc66c43725974ff65f4e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -259,6 +274,7 @@
     },
     {
       "source": "php/app/destroy.php",
+      "sourceStatus": "published",
       "sha256": "50947382b0e1b8e42c9179c259b779bd385af60fcbfb8f26fc12adcaf1bb008b",
       "classification": "functional-replacement",
       "featureIds": [
@@ -268,6 +284,7 @@
     },
     {
       "source": "php/app/export_page.php",
+      "sourceStatus": "published",
       "sha256": "7c1560a694ed92e5257bf5bd0e7cb6c719fcc1ad77e47fa83aebaa28fd0e1915",
       "classification": "functional-replacement",
       "featureIds": [
@@ -277,6 +294,7 @@
     },
     {
       "source": "php/app/export_page_pro.php",
+      "sourceStatus": "published",
       "sha256": "b15bd43afc1572299b81c8fd0672d778e717ff4f7ba83531f072acd076dd9f61",
       "classification": "functional-replacement",
       "featureIds": [
@@ -289,6 +307,7 @@
     },
     {
       "source": "php/app/function_pagin.php",
+      "sourceStatus": "archived-unused",
       "sha256": "21d478a5cd47efa628f0ec8c86d89b777c990e66e7a055931f809b6d07ace1ba",
       "classification": "functional-replacement",
       "featureIds": [
@@ -298,6 +317,7 @@
     },
     {
       "source": "php/app/history_data.php",
+      "sourceStatus": "published",
       "sha256": "7a3f24d4f3e4efafc51621bc241fd721418204193ec11b704adbe922960c89f7",
       "classification": "functional-replacement",
       "featureIds": [
@@ -307,6 +327,7 @@
     },
     {
       "source": "php/app/home.php",
+      "sourceStatus": "published",
       "sha256": "a74228b148516694083cab944c64139107f792f312eec3664f6eb5fb2f752989",
       "classification": "functional-replacement",
       "featureIds": [
@@ -316,6 +337,7 @@
     },
     {
       "source": "php/app/import_excel.php",
+      "sourceStatus": "published",
       "sha256": "8270d44ef633d0238735cbebc37d8524b8170226d0b9b723f9b0a1d44201e151",
       "classification": "functional-replacement",
       "featureIds": [
@@ -325,6 +347,7 @@
     },
     {
       "source": "php/app/lating.php",
+      "sourceStatus": "archived-unused",
       "sha256": "0e2a11b802330e35db94e33097e79c2abe759072e27080c897f2c5df357ec166",
       "classification": "functional-replacement",
       "featureIds": [
@@ -334,6 +357,7 @@
     },
     {
       "source": "php/app/manage.php",
+      "sourceStatus": "published",
       "sha256": "a254ef5dd2567efc14db35de352b68cf3199c1658b73ded57ac5f4bef4ba184c",
       "classification": "functional-replacement",
       "featureIds": [
@@ -471,6 +495,7 @@
     },
     {
       "source": "php/app/manageX.php",
+      "sourceStatus": "published",
       "sha256": "85e3d1f9052dbd830c4d594d8ef44e6c20e279f1da56c74df48f3b4340e038f1",
       "classification": "functional-replacement",
       "featureIds": [
@@ -492,6 +517,7 @@
     },
     {
       "source": "php/app/manage_admin.php",
+      "sourceStatus": "published",
       "sha256": "a697c477402c36637c7833b6b0cb14ebcb1a1d719f7ba227beeadd6062c29fba",
       "classification": "functional-replacement",
       "featureIds": [
@@ -501,6 +527,7 @@
     },
     {
       "source": "php/app/manage_cityplan(pagination).php",
+      "sourceStatus": "published",
       "sha256": "1adb814060c9c04f53ef7ba85a8c85b3a14f312d0c1627e04186f5d769ccf834",
       "classification": "functional-replacement",
       "featureIds": [
@@ -510,6 +537,7 @@
     },
     {
       "source": "php/app/manage_cityplan.php",
+      "sourceStatus": "published",
       "sha256": "85dd192e7bd0323a5584bd7c406edd9bd89966b340df4ebe8d1ea51a17b8d66c",
       "classification": "functional-replacement",
       "featureIds": [
@@ -519,6 +547,7 @@
     },
     {
       "source": "php/app/manage_cityplanP.php",
+      "sourceStatus": "archived-unused",
       "sha256": "41b642d6a418e3b1c5238173b9c0f9822a105439d4db86aab2cbda93d11e3e2b",
       "classification": "functional-replacement",
       "featureIds": [
@@ -528,6 +557,7 @@
     },
     {
       "source": "php/app/manage_consider.php",
+      "sourceStatus": "published",
       "sha256": "f6160001f4e5dac28343501c7b7859c8c4f12b3fcde62d63b6a965a429239eba",
       "classification": "functional-replacement",
       "featureIds": [
@@ -537,6 +567,7 @@
     },
     {
       "source": "php/app/manage_group_note.php",
+      "sourceStatus": "published",
       "sha256": "f4b18ba3673bbc95842707c8e9165db2d5737148ab1705b9a2a5fd6e67a160f1",
       "classification": "functional-replacement",
       "featureIds": [
@@ -546,6 +577,7 @@
     },
     {
       "source": "php/app/manage_group_note_pro.php",
+      "sourceStatus": "published",
       "sha256": "344defec85c0fd9d563d6f7b9b6038a97ad241fdf8c9f4c1ba7fc177ecabd878",
       "classification": "functional-replacement",
       "featureIds": [
@@ -555,6 +587,7 @@
     },
     {
       "source": "php/app/manage_note(new).php",
+      "sourceStatus": "published",
       "sha256": "97cb3fbd948a8fdd12eae6958630912ae5a4f57080f2fe4aab9f9ac5e9d7da5d",
       "classification": "functional-replacement",
       "featureIds": [
@@ -564,6 +597,7 @@
     },
     {
       "source": "php/app/manage_note.php",
+      "sourceStatus": "published",
       "sha256": "c67e193cd78acfc0a2d5bb682182454488560ce36cbebecf04e5659690b69594",
       "classification": "functional-replacement",
       "featureIds": [
@@ -573,6 +607,7 @@
     },
     {
       "source": "php/app/manage_plan.php",
+      "sourceStatus": "published",
       "sha256": "e54c956420b5e7151e0f36823629ebab4d78ff032297c09ec6a06bf4fb3f7c64",
       "classification": "functional-replacement",
       "featureIds": [
@@ -582,6 +617,7 @@
     },
     {
       "source": "php/app/manage_plan_pro.php",
+      "sourceStatus": "published",
       "sha256": "5dee7b3650b18557df96874f0a9be422eec2926ff357fecf9629c4edd2620212",
       "classification": "functional-replacement",
       "featureIds": [
@@ -593,6 +629,7 @@
     },
     {
       "source": "php/app/manage_plan_proX.php",
+      "sourceStatus": "published",
       "sha256": "804cff3cf3b15df679d2c17cc9f5052f8fbe24e088687deac27757dde96c0c0d",
       "classification": "functional-replacement",
       "featureIds": [
@@ -604,6 +641,7 @@
     },
     {
       "source": "php/app/manage_province.php",
+      "sourceStatus": "published",
       "sha256": "4e5a96341ef00af7659cbac61bdde05fdf6164c778e945d6e5b932e69b35c37c",
       "classification": "functional-replacement",
       "featureIds": [
@@ -613,6 +651,7 @@
     },
     {
       "source": "php/app/manage_step.php",
+      "sourceStatus": "published",
       "sha256": "96c7ab6b211d0a094f1a4b3fc02e76657c30f2ff41a94766624c76cc416c369c",
       "classification": "functional-replacement",
       "featureIds": [
@@ -622,6 +661,7 @@
     },
     {
       "source": "php/app/manage_stepsub.php",
+      "sourceStatus": "published",
       "sha256": "1e598ff04aac41cdae0523ba9e72657c26a98b54cc5f2db0da90ff4fe745186e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -631,6 +671,7 @@
     },
     {
       "source": "php/app/manage_substep.php",
+      "sourceStatus": "published",
       "sha256": "d222d69c2bb040746e8cdca98fba7b8e4286fb84661dac6396122c1a98e17c4b",
       "classification": "functional-replacement",
       "featureIds": [
@@ -640,6 +681,7 @@
     },
     {
       "source": "php/app/mytest.php",
+      "sourceStatus": "published",
       "sha256": "59a9b5749edcc252c4350328dbdc547eb3ee4c78ff4037a61b894d61b3477ca5",
       "classification": "functional-replacement",
       "featureIds": [
@@ -649,6 +691,7 @@
     },
     {
       "source": "php/app/note.php",
+      "sourceStatus": "published",
       "sha256": "795269cd6f207b90ef8356e69994497b9c23995063fcf2825194a5c306fab8e0",
       "classification": "functional-replacement",
       "featureIds": [
@@ -658,6 +701,7 @@
     },
     {
       "source": "php/app/pro_admin.php",
+      "sourceStatus": "published",
       "sha256": "11b993d0f04af90ea6b9a35dd933453af13e3da4144954ab7d205badc54cea61",
       "classification": "functional-replacement",
       "featureIds": [
@@ -667,6 +711,7 @@
     },
     {
       "source": "php/app/pro_cityplan.php",
+      "sourceStatus": "archived-unused",
       "sha256": "1dd98806b82a7089fc33569f446a899833fe23a97a390e9f13423f46013c569c",
       "classification": "functional-replacement",
       "featureIds": [
@@ -676,6 +721,7 @@
     },
     {
       "source": "php/app/pro_cityplanX.php",
+      "sourceStatus": "archived-unused",
       "sha256": "093e1e14a640f3bcd11742d6812f648dfa68bdf206a0251d804cd8869e9c6d71",
       "classification": "functional-replacement",
       "featureIds": [
@@ -685,6 +731,7 @@
     },
     {
       "source": "php/app/pro_cityplanY.php",
+      "sourceStatus": "published",
       "sha256": "0ef0bbcd82977968ab1019669071c46a709c150e4f99635f02141606f4386da1",
       "classification": "functional-replacement",
       "featureIds": [
@@ -694,6 +741,7 @@
     },
     {
       "source": "php/app/pro_cityplan_lating.php",
+      "sourceStatus": "published",
       "sha256": "a48c61eed874d2ec787c5b9251f436565109f766df1d7bb5bc013ac5ae5d4aad",
       "classification": "functional-replacement",
       "featureIds": [
@@ -704,6 +752,7 @@
     },
     {
       "source": "php/app/pro_consider.php",
+      "sourceStatus": "published",
       "sha256": "497126e43f95853b60d9142c2e3ebd97161e392a93695c8084b8cef03f5ecf08",
       "classification": "functional-replacement",
       "featureIds": [
@@ -713,6 +762,7 @@
     },
     {
       "source": "php/app/pro_csd.php",
+      "sourceStatus": "published",
       "sha256": "e438ed5d2311a5afed233b746546b155a737ac530022fdd74842c9c2c6c535f9",
       "classification": "functional-replacement",
       "featureIds": [
@@ -722,6 +772,7 @@
     },
     {
       "source": "php/app/pro_history.php",
+      "sourceStatus": "published",
       "sha256": "f83095dd483c07fe930665a92e2bb72b9f4de662bfc1d2b7b668f366f74125a3",
       "classification": "functional-replacement",
       "featureIds": [
@@ -731,6 +782,7 @@
     },
     {
       "source": "php/app/pro_log.php",
+      "sourceStatus": "published",
       "sha256": "db98443068f05efcc3f644dfc82533ed6359bc0a9d39bd657e45b4dc7192222f",
       "classification": "functional-replacement",
       "featureIds": [
@@ -740,6 +792,7 @@
     },
     {
       "source": "php/app/pro_province.php",
+      "sourceStatus": "published",
       "sha256": "5dab50611538bbcfaf76c4ca09552e71baee6837ea9101e2c4059b32ffa0e2e8",
       "classification": "functional-replacement",
       "featureIds": [
@@ -749,6 +802,7 @@
     },
     {
       "source": "php/app/pro_unset.php",
+      "sourceStatus": "published",
       "sha256": "505ad706e359c952459e549769e7a221a65bb8780d179cbf84ebbc523ce078f6",
       "classification": "functional-replacement",
       "featureIds": [
@@ -758,6 +812,7 @@
     },
     {
       "source": "php/app/pt.php",
+      "sourceStatus": "archived-unused",
       "sha256": "c08cefdac62df9d3d7c0dcf2cee42126a9cf2382b11bb00b9f40eaffbc0d1626",
       "classification": "functional-replacement",
       "featureIds": [
@@ -767,6 +822,7 @@
     },
     {
       "source": "php/app/ptt.php",
+      "sourceStatus": "published",
       "sha256": "1e0b09dded2a6d8cddbba081a95c8c768395401328915325ad8ae4a517a44488",
       "classification": "functional-replacement",
       "featureIds": [
@@ -776,6 +832,7 @@
     },
     {
       "source": "php/app/report.php",
+      "sourceStatus": "published",
       "sha256": "0b1f6579be33f43f407db0848a68adcee3f45ee941898a3c5d5b243728e98d12",
       "classification": "functional-replacement",
       "featureIds": [
@@ -785,6 +842,7 @@
     },
     {
       "source": "php/app/report_a.php",
+      "sourceStatus": "published",
       "sha256": "c075dfa712c1a2d542dca2a36d451779b28db700f688875384c74ed225619183",
       "classification": "functional-replacement",
       "featureIds": [
@@ -794,6 +852,7 @@
     },
     {
       "source": "php/app/search.php",
+      "sourceStatus": "published",
       "sha256": "a568d6141ab779a7280dc3903e7c72e7d298f2ca0a5617383cdd98426b6ea53e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -803,6 +862,7 @@
     },
     {
       "source": "php/app/search_cityplan.php",
+      "sourceStatus": "published",
       "sha256": "2ce66551ab8dd12e474c3633e36658dbf6b9273db90f2385610743e5e8bc4d1a",
       "classification": "functional-replacement",
       "featureIds": [
@@ -812,6 +872,7 @@
     },
     {
       "source": "php/app/search_data.php",
+      "sourceStatus": "published",
       "sha256": "baaa5fa08b0174b9a8e3d4f1f19b5ba03496bbddfa6664248fcd58f07f08207e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -821,6 +882,7 @@
     },
     {
       "source": "php/app/show_csd.php",
+      "sourceStatus": "published",
       "sha256": "446c15dd7e484459cb8f1fe3d563070091cce0476ed342a75273f514211e69de",
       "classification": "functional-replacement",
       "featureIds": [
@@ -830,6 +892,7 @@
     },
     {
       "source": "php/app/show_extra.php",
+      "sourceStatus": "published",
       "sha256": "3358b261b1dce7de3ace70171d88d948b160c5e70288e03bf98c039f6949da43",
       "classification": "functional-replacement",
       "featureIds": [
@@ -839,6 +902,7 @@
     },
     {
       "source": "php/app/show_extra_keth.php",
+      "sourceStatus": "published",
       "sha256": "4a29c766cf51b8f30afd3b0ccca8e10cad34d0de5ab30af73c29e24a48e047d4",
       "classification": "functional-replacement",
       "featureIds": [
@@ -848,6 +912,7 @@
     },
     {
       "source": "php/app/show_keth.php",
+      "sourceStatus": "published",
       "sha256": "6e51eb48ce741f23ccb343652fa3fbfc1430d8fe36d2ed76bcd48499182f2281",
       "classification": "functional-replacement",
       "featureIds": [
@@ -857,6 +922,7 @@
     },
     {
       "source": "php/app/show_log.php",
+      "sourceStatus": "published",
       "sha256": "a7bce8b722bea9da5566f9ccc1f9ab31791d1b4b8853291914eb549d69713f5c",
       "classification": "functional-replacement",
       "featureIds": [
@@ -866,6 +932,7 @@
     },
     {
       "source": "php/app/show_page_park-keth.php",
+      "sourceStatus": "published",
       "sha256": "b9cd40fb057121cd2dc923e7086f64ecc652dc8dfd481ed223092517303c8137",
       "classification": "functional-replacement",
       "featureIds": [
@@ -875,6 +942,7 @@
     },
     {
       "source": "php/app/show_page_park-keth_pro.php",
+      "sourceStatus": "published",
       "sha256": "9edc8c48e1ca28a1e46ce47e5663fe5b89cc7d0e852c1fce847ddd7c7fc2c838",
       "classification": "functional-replacement",
       "featureIds": [
@@ -884,6 +952,7 @@
     },
     {
       "source": "php/app/show_page_park_detail.php",
+      "sourceStatus": "archived-unused",
       "sha256": "d0b08eae310922b817370a3dc7473d2ae8eef6f0047ed273eb5e9692a7235dc9",
       "classification": "functional-replacement",
       "featureIds": [
@@ -893,6 +962,7 @@
     },
     {
       "source": "php/app/show_park.php",
+      "sourceStatus": "published",
       "sha256": "c6c2baf6d49d29affe3b8ae77b91e6798f01655dde1c81a9c9370b0626fb5f65",
       "classification": "functional-replacement",
       "featureIds": [
@@ -902,6 +972,7 @@
     },
     {
       "source": "php/app/show_step.php",
+      "sourceStatus": "published",
       "sha256": "0864ed1a58ccb7b1b1f4ecc7bd1171b1cac4c13192b832d91a139ae6c9f60f91",
       "classification": "functional-replacement",
       "featureIds": [
@@ -911,6 +982,7 @@
     },
     {
       "source": "php/app/status_current.php",
+      "sourceStatus": "archived-unused",
       "sha256": "4d8712b73914e5f10e5652f2ddc32df1a4a63d6e5b323652796b2e83e1de8f5e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -920,6 +992,7 @@
     },
     {
       "source": "php/app/status_current_pro.php",
+      "sourceStatus": "archived-unused",
       "sha256": "8dfcfe8e7dff829af4a863010872b5aeb16f0a3e6ae8bd899df14d6ac219f26e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -929,6 +1002,7 @@
     },
     {
       "source": "php/app/status_currentx.php",
+      "sourceStatus": "published",
       "sha256": "8de582aace978ba31a1e0b1bffc3ffb70153d1fd41ea16f8300ff156e44be4a0",
       "classification": "functional-replacement",
       "featureIds": [
@@ -938,6 +1012,7 @@
     },
     {
       "source": "php/app/status_currentx_pro.php",
+      "sourceStatus": "published",
       "sha256": "927219672ba28c170ace92c20472853d9ed6016cbf9ec82182564a1f05d7f26b",
       "classification": "functional-replacement",
       "featureIds": [
@@ -947,6 +1022,7 @@
     },
     {
       "source": "php/app/status_date.php",
+      "sourceStatus": "published",
       "sha256": "8078ae3b94f49604e66452ad2a440b896be5f47473275425594e8881ba494a60",
       "classification": "functional-replacement",
       "featureIds": [
@@ -956,6 +1032,7 @@
     },
     {
       "source": "php/app/status_law.php",
+      "sourceStatus": "published",
       "sha256": "2cbc16c77a6641221109825609d5a3fac5445efeb4361acbce1dac1bac987afd",
       "classification": "functional-replacement",
       "featureIds": [
@@ -965,6 +1042,7 @@
     },
     {
       "source": "php/app/status_operate-law_pro.php",
+      "sourceStatus": "published",
       "sha256": "c2f86ec4da60e657232bd9bff51d926a91e845b26a25f9ade3350de496aad581",
       "classification": "functional-replacement",
       "featureIds": [
@@ -974,6 +1052,7 @@
     },
     {
       "source": "php/app/status_operate.php",
+      "sourceStatus": "published",
       "sha256": "6331ebed106cc2ec9c58bfbac393aac4cc0b17b456c4b8746f12316460f0f93a",
       "classification": "functional-replacement",
       "featureIds": [
@@ -983,6 +1062,7 @@
     },
     {
       "source": "php/app/step.php",
+      "sourceStatus": "published",
       "sha256": "8120ffe469b8d8aa0a78ba1e623090c8f85ea22ef2af41c9849973765b807770",
       "classification": "functional-replacement",
       "featureIds": [
@@ -992,6 +1072,7 @@
     },
     {
       "source": "php/app/substep.php",
+      "sourceStatus": "published",
       "sha256": "b42c6e685eed69de04ee011d5eb02b4bde73f777c7c11c703e889664f257f11f",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1001,6 +1082,7 @@
     },
     {
       "source": "php/app/super_admin.php",
+      "sourceStatus": "archived-unused",
       "sha256": "67d6be04c27bf731158d1652c97ed26ff331cb2ec9abd225db29dfd6d24f2188",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1010,6 +1092,7 @@
     },
     {
       "source": "php/app/t1.php",
+      "sourceStatus": "published",
       "sha256": "5336df10bf1a35d11ab18b598c73bf73d980b228a6b91e7063dfb6ec44e47255",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1019,6 +1102,7 @@
     },
     {
       "source": "php/app/t2.php",
+      "sourceStatus": "published",
       "sha256": "141bbbbcf538c64ad505ebd111eb1bbfc590f017f35613c184b8cd9a142b2610",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1028,6 +1112,7 @@
     },
     {
       "source": "php/app/t3.php",
+      "sourceStatus": "published",
       "sha256": "e854713af830efd3bfdce9ee7dbae9d6cdf2e4f0b11fed106b9165d56cae49d9",
       "classification": "no-business-behavior",
       "featureIds": [],
@@ -1036,6 +1121,7 @@
     },
     {
       "source": "php/app/t4.php",
+      "sourceStatus": "published",
       "sha256": "0389263bea29ebb04ec6d60f702c40f5c7e393d3d9f295f90216032fecd9aea9",
       "classification": "no-business-behavior",
       "featureIds": [],
@@ -1044,6 +1130,7 @@
     },
     {
       "source": "php/app/unset_data.php",
+      "sourceStatus": "published",
       "sha256": "32e521ec956d8f556fc5fb0fc3ab2c51cbd80c56bb8129f8cc681ee834f578b7",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1053,6 +1140,7 @@
     },
     {
       "source": "php/app/uploadcityplanimg.php",
+      "sourceStatus": "published",
       "sha256": "5aadd9215e8253dc87fc371b229d95f5fe1e2ae1090f243d742d5ea10179670a",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1062,6 +1150,7 @@
     },
     {
       "source": "php/app/uploadcityplanimgx.php",
+      "sourceStatus": "published",
       "sha256": "2df44e7da563c82d8074339e8d5ec62668c90e8c3cf6430f921c017eabea6e83",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1071,6 +1160,7 @@
     },
     {
       "source": "php/app/user.php",
+      "sourceStatus": "archived-unused",
       "sha256": "472d90773403325274fa3a5c62b0886f6b7b62d06664b6bdd9abe60d48d5ca9e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1080,6 +1170,7 @@
     },
     {
       "source": "php/apps/company_project.php",
+      "sourceStatus": "published",
       "sha256": "cc910c7208a2cabee6d496902bd53bf2946a7ed02bc50fe2808f65d455bfc85f",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1089,6 +1180,7 @@
     },
     {
       "source": "php/apps/demo_m1(orgin).php",
+      "sourceStatus": "archived-unused",
       "sha256": "c4302cbef54dfa14f7e1e7968284854da7d34505f082801e3596f9d40caa0394",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1098,6 +1190,7 @@
     },
     {
       "source": "php/apps/demo_m1.php",
+      "sourceStatus": "archived-unused",
       "sha256": "0114c3e47299be85bdbe5d794d75ccca4aa1e22105e53b8aea9d57040519b3ff",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1107,6 +1200,7 @@
     },
     {
       "source": "php/apps/home.php",
+      "sourceStatus": "archived-unused",
       "sha256": "25ea6eef621e97548103c73a3ccd181fd940c9a4320485e73d42d4c9b75ba651",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1116,6 +1210,7 @@
     },
     {
       "source": "php/apps/index_x(pro).php",
+      "sourceStatus": "published",
       "sha256": "a379294c8ef9395eb1e206550b2e20decc9b0c930d6d4244506a5375d0ea85df",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1131,6 +1226,7 @@
     },
     {
       "source": "php/apps/manage_company(pro).php",
+      "sourceStatus": "published",
       "sha256": "09d1b495d50852e2e51158649044d5cb32ab99ab44b1b2d9ffbac4e69ba30565",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1145,6 +1241,7 @@
     },
     {
       "source": "php/apps/manage_company.php",
+      "sourceStatus": "published",
       "sha256": "808ef3afdf61b2cf52fa7627f8b578c7928945797c9898065d58678254701646",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1154,6 +1251,7 @@
     },
     {
       "source": "php/apps/manage_hardware(pro).php",
+      "sourceStatus": "published",
       "sha256": "22ca009b65871f94135bc4d78bf95a622deec5671b4f4a38bdd9e05e1d9c33a6",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1168,6 +1266,7 @@
     },
     {
       "source": "php/apps/manage_hardware.php",
+      "sourceStatus": "published",
       "sha256": "cca28708e003c1fb07ee7d7eb750dbc4c20228c41f51cdca302c27aa23a04ac4",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1177,6 +1276,7 @@
     },
     {
       "source": "php/apps/manage_plan.php",
+      "sourceStatus": "published",
       "sha256": "dcd018330bd2b5a9862c4a53e3dbd8ce4be6e0786440e22e25c489521adcdebd",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1186,6 +1286,7 @@
     },
     {
       "source": "php/apps/manage_project(pro).php",
+      "sourceStatus": "published",
       "sha256": "6896668348441fd1b43055c3ab790e6b16cbed45a1e233dc69ccbff88dd7be14",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1200,6 +1301,7 @@
     },
     {
       "source": "php/apps/manage_project.php",
+      "sourceStatus": "published",
       "sha256": "fdf401ee6a3d7a1ba57ae95abf51d6023dce4e7859b2bc94e386391687fbf683",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1209,6 +1311,7 @@
     },
     {
       "source": "php/apps/manage_rce(pro).php",
+      "sourceStatus": "published",
       "sha256": "dae2a6cb3c5bbbc6c411c20642c8574edeb43f6de5a6734ae7651316aa88a636",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1224,6 +1327,7 @@
     },
     {
       "source": "php/apps/manage_rce.php",
+      "sourceStatus": "published",
       "sha256": "585cb4540fe9e81002a1b613b9e1d9214d69e4877063b35e5e56b890559e10ca",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1233,6 +1337,7 @@
     },
     {
       "source": "php/apps/plan_equipment(pro).php",
+      "sourceStatus": "published",
       "sha256": "67b4e12a0f7451285a9843ee95d7855889e10d06dc0901142e7eda33e466030b",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1247,6 +1352,7 @@
     },
     {
       "source": "php/apps/plan_equipment.php",
+      "sourceStatus": "published",
       "sha256": "f7f7816a278bce2d5596d965158e3ae54dda589fa5c6dd0424f546984aceefec",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1256,6 +1362,7 @@
     },
     {
       "source": "php/apps/plan_load_eqm.php",
+      "sourceStatus": "published",
       "sha256": "fb59557b3ddd767f2e1c7edaae9ae9ef5ba61c6e32d1cf41083c77ecfa3b60a1",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1265,6 +1372,7 @@
     },
     {
       "source": "php/apps/plan_show(origin).php",
+      "sourceStatus": "archived-unused",
       "sha256": "2407383c3ca20921e834a3297841475d8e8a63284ecb2eca337981b3c0ffe455",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1274,6 +1382,7 @@
     },
     {
       "source": "php/apps/plan_show(user).php",
+      "sourceStatus": "published",
       "sha256": "58a1328147695799fabe16fc0dec8f118cf824b7ac705c49e9a14a4d95a08282",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1283,6 +1392,7 @@
     },
     {
       "source": "php/apps/plan_show.php",
+      "sourceStatus": "archived-unused",
       "sha256": "2407383c3ca20921e834a3297841475d8e8a63284ecb2eca337981b3c0ffe455",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1292,6 +1402,7 @@
     },
     {
       "source": "php/apps/plan_show2.php",
+      "sourceStatus": "published",
       "sha256": "7b23343f872385daab1076eb5ad66f5875ad7423bd3424e574cc1e79a0bb8bc8",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1301,6 +1412,7 @@
     },
     {
       "source": "php/apps/project_equipment(pro).php",
+      "sourceStatus": "published",
       "sha256": "44c0e2a6a5ababcf80b5b22b085fbb39e2ffed6c72aa5384cc91bb177d586863",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1310,6 +1422,7 @@
     },
     {
       "source": "php/apps/project_equipment.php",
+      "sourceStatus": "published",
       "sha256": "4c11de2c7b0e8e2350b2d4c714e389ebc6b1ecf99ec87a6930132cd4ad1f69f6",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1319,6 +1432,7 @@
     },
     {
       "source": "php/apps/project_load_equipment(origin).php",
+      "sourceStatus": "archived-unused",
       "sha256": "3d1b895a11e2720fb5605515daa3c0d0d1d30835ac903ff77aa7daa06635bf22",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1328,6 +1442,7 @@
     },
     {
       "source": "php/apps/project_load_equipment.php",
+      "sourceStatus": "published",
       "sha256": "15dea63a881df186f11871a2cbe83d03063c08057096291851d0a29c7a9c067f",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1337,6 +1452,7 @@
     },
     {
       "source": "php/apps/project_report.php",
+      "sourceStatus": "archived-unused",
       "sha256": "7e4f138e406ea52c215bb1020f0fc158afb3887f485543d080f53d5aae51f4dd",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1346,6 +1462,7 @@
     },
     {
       "source": "php/apps/project_report2.php",
+      "sourceStatus": "archived-unused",
       "sha256": "c781dc0a993dfc1f68b9f84a910f391df94c7daae595adb8b10846e12ad2d2fc",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1355,6 +1472,7 @@
     },
     {
       "source": "php/apps/rce_data.php",
+      "sourceStatus": "published",
       "sha256": "4ce6f6ac56fd0366de6032ee33973d29d89efea0be4855882468128e2ad53922",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1364,6 +1482,7 @@
     },
     {
       "source": "php/apps/search_eqm.php",
+      "sourceStatus": "published",
       "sha256": "08dc4113e2fba4d508ba74df76278bf81b8bdffcf1a115a8c5adf3e2a9d96fc3",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1373,6 +1492,7 @@
     },
     {
       "source": "php/apps/show_company.php",
+      "sourceStatus": "archived-unused",
       "sha256": "4c17e5c434f18da1b3a10e4981871a8771aa995fa65d608cf793a2d3b321254c",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1382,6 +1502,7 @@
     },
     {
       "source": "php/apps/show_hardware.php",
+      "sourceStatus": "archived-unused",
       "sha256": "5b11c3d465d6fdfe44c97b249b82a8d086b9e3a9cb383a9d18f5fb27aaeffd09",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1391,6 +1512,7 @@
     },
     {
       "source": "php/apps/show_plan.php",
+      "sourceStatus": "published",
       "sha256": "d41f797daaad89ac71aabcd1f0fa771d5e6c4f148a22c600435ed0d30cc40046",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1400,6 +1522,7 @@
     },
     {
       "source": "php/apps/show_project.php",
+      "sourceStatus": "archived-unused",
       "sha256": "09ff4e1151ad29f68b515e6f82530615b7ba3ed32df97489b48d170dc168e279",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1409,6 +1532,7 @@
     },
     {
       "source": "php/apps/show_rce.php",
+      "sourceStatus": "published",
       "sha256": "a5ec26503c749b2daf68117179a3436704b2a43d6087be3f08bfbfb0776c91d6",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1418,6 +1542,7 @@
     },
     {
       "source": "php/apps/test_array_sql.php",
+      "sourceStatus": "archived-unused",
       "sha256": "0a1d69abe9f2ced308a06d6268a9c23e233e5ca5ab9c82994ce83a804e64eeae",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1427,6 +1552,7 @@
     },
     {
       "source": "php/apps/test_array_sql2.php",
+      "sourceStatus": "archived-unused",
       "sha256": "3fdf6901b94039fccb0ad5bd5665b9dd6f82551c5c332b22158c8a17a06c4d11",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1436,6 +1562,7 @@
     },
     {
       "source": "php/appx/show_cityplan.php",
+      "sourceStatus": "archived-unused",
       "sha256": "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1445,6 +1572,7 @@
     },
     {
       "source": "php/c-admin.php",
+      "sourceStatus": "archived-unused",
       "sha256": "dd89e585353e78dcb162bd34086f0f0bf7a25e662fec45030b32ae6c70562de6",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1454,6 +1582,7 @@
     },
     {
       "source": "php/c-admin1.php",
+      "sourceStatus": "archived-unused",
       "sha256": "b2034f189d8505f80dc5d1b66a19bdbf1e0993487eb794fc9d8d854b4c3c2348",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1463,6 +1592,7 @@
     },
     {
       "source": "php/c-super_admin.php",
+      "sourceStatus": "archived-unused",
       "sha256": "d059176a233918eaa5e6db763c11643a62588d9ce26d18be03c105cdd986305a",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1472,6 +1602,7 @@
     },
     {
       "source": "php/chatbot.php",
+      "sourceStatus": "published",
       "sha256": "84980595ac63d327d6999ec85c2aead1625b1a220279aba5af5777fc2c63f826",
       "classification": "disabled-in-source",
       "featureIds": [],
@@ -1480,6 +1611,7 @@
     },
     {
       "source": "php/img/loading-bar-test.php",
+      "sourceStatus": "archived-unused",
       "sha256": "8cf0da64aaad3b85771bec653cd2efb8b129045b0cf91671af31e233c8503a0d",
       "classification": "ui-demonstration",
       "featureIds": [],
@@ -1488,6 +1620,7 @@
     },
     {
       "source": "php/index.php",
+      "sourceStatus": "published",
       "sha256": "88906b19953a78688e6c655462ddf9a10683f5895873cc47d55f642f7a0511fb",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1497,6 +1630,7 @@
     },
     {
       "source": "php/js/function_db.php",
+      "sourceStatus": "published",
       "sha256": "2936ca3081c8465112358181aee7fd42d6e579944a33d072fd8669f68a0c079a",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1506,6 +1640,7 @@
     },
     {
       "source": "php/js/function_php.php",
+      "sourceStatus": "published",
       "sha256": "652b5a3bc78ad35f17056d4003e1d2eb8646ce8021d7e1bcf62e804adf8fbdff",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1515,6 +1650,7 @@
     },
     {
       "source": "php/js/provinces.php",
+      "sourceStatus": "archived-unused",
       "sha256": "d14ca424182f2def9960b6f4daba61bd1aa8b818abd5186e5c410b19c55d15b2",
       "classification": "geographic-data",
       "featureIds": [],
@@ -1523,6 +1659,7 @@
     },
     {
       "source": "php/js/script.php",
+      "sourceStatus": "archived-unused",
       "sha256": "52c9c6ce6c7b8ddb7f5c634b80cfe8cf54cd798fd3d0aaf6dcd9c8259a469912",
       "classification": "asset-loader",
       "featureIds": [],
@@ -1531,6 +1668,7 @@
     },
     {
       "source": "php/map.php",
+      "sourceStatus": "published",
       "sha256": "0ec319a5b83da9c5330057060a81ac134cd27bbcaa1532c807578a37a55f1e6f",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1540,6 +1678,7 @@
     },
     {
       "source": "php/map/function_external.php",
+      "sourceStatus": "archived-unused",
       "sha256": "906d20de3794dc51665b0ae0533c2206ace54f8799f528f7f651f99a2a679231",
       "classification": "no-business-behavior",
       "featureIds": [],
@@ -1550,6 +1689,7 @@
     },
     {
       "source": "php/map/map_province.php",
+      "sourceStatus": "published",
       "sha256": "8243b0651048daca54065b72ac22accd9a3cb770eb5628dbe3df1fb941e120e2",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1559,6 +1699,7 @@
     },
     {
       "source": "php/map/map_province_pro.php",
+      "sourceStatus": "published",
       "sha256": "6c1c7d87d83d875058e21f9e31ec660230c92a5c9cbdbc32f50a989b465e995b",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1571,6 +1712,7 @@
     },
     {
       "source": "php/map_pro.php",
+      "sourceStatus": "published",
       "sha256": "7f01ca5fe74a8a5f650a6a239f8561052cd097f21d3719167103fe92eb5e2602",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1580,6 +1722,7 @@
     },
     {
       "source": "php/mock_db_setup.php",
+      "sourceStatus": "published",
       "sha256": "c7bea14c3dfde29cdfbd415f50e22440a9e6528571ab55807cdbdd795619cfc6",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1589,6 +1732,7 @@
     },
     {
       "source": "php/nav1.php",
+      "sourceStatus": "published",
       "sha256": "f5fe2bce1cc27dd205bcca0ec605b1aaf6a8471385f925662437ff7b81ebf414",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1598,6 +1742,7 @@
     },
     {
       "source": "php/nav2.php",
+      "sourceStatus": "archived-unused",
       "sha256": "982c84c95e1dc27d0f922092815029e5ac8f3c55b3233ab843d7899a73bc2814",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1607,6 +1752,7 @@
     },
     {
       "source": "php/navA.php",
+      "sourceStatus": "archived-unused",
       "sha256": "9273b5df55c7d1b2969d3a15fd6123b13ad52c99bd1ce67fec10c1b8f9bb6e62",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1616,6 +1762,7 @@
     },
     {
       "source": "php/navA1.php",
+      "sourceStatus": "archived-unused",
       "sha256": "6f69e8414e82f00a7ede6c196305098d4f9f1397ffa9ed00bb32635b5e6dfca1",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1625,6 +1772,7 @@
     },
     {
       "source": "php/navSA.php",
+      "sourceStatus": "archived-unused",
       "sha256": "8aa36b08b86a920b52229474fc5973dc36ce785b1665c6f51f0a2fc26dae5e9f",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1634,6 +1782,7 @@
     },
     {
       "source": "php/navU.php",
+      "sourceStatus": "archived-unused",
       "sha256": "85b80a33c43e8595707308ca6f27b6b1cfdb7a03b14fd18b4b3347b6491e69f1",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1643,6 +1792,7 @@
     },
     {
       "source": "php/report/atest.php",
+      "sourceStatus": "archived-unused",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1652,6 +1802,7 @@
     },
     {
       "source": "php/report/budget-table.php",
+      "sourceStatus": "published",
       "sha256": "2e1047e4aa5305823a60513fa3d03cc6190eabbc9dcb3057aca1b4e2e27d586b",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1661,6 +1812,7 @@
     },
     {
       "source": "php/report/cityplan-chart.php",
+      "sourceStatus": "published",
       "sha256": "148e5e357457a24b88c7f2d1a35be9f310c5c15748b389c0c4f8d57aa0ce70cb",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1670,6 +1822,7 @@
     },
     {
       "source": "php/report/cityplan-oldchart.php",
+      "sourceStatus": "archived-unused",
       "sha256": "e4847b3475a05a42d260183d9b88f5a16ef98e220ddec86aa7d37fdcc283dfa5",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1679,6 +1832,7 @@
     },
     {
       "source": "php/report/cityplan-table.php",
+      "sourceStatus": "published",
       "sha256": "97817a9fc8ec837e83117f3f4ce9365224ef7d1ebbdc98a3d24ac1699fc1a1bb",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1688,6 +1842,7 @@
     },
     {
       "source": "php/report/convertnote.php",
+      "sourceStatus": "archived-unused",
       "sha256": "cd504fd5bd20235a0f6cfd42f4213682c9506f48d0363ecf5c2d2c6d075c7099",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1698,6 +1853,7 @@
     },
     {
       "source": "php/report/dashboard_kana.php",
+      "sourceStatus": "published",
       "sha256": "c9e85d109c5d1fbf453e21d810fd12fbbb4334867a063656ac292147a986403d",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1708,6 +1864,7 @@
     },
     {
       "source": "php/report/eec-table.php",
+      "sourceStatus": "published",
       "sha256": "77f8b671e76fad3240161ac4007711c19ab48dda315ca59e6fa4ba3af3b9a337",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1717,6 +1874,7 @@
     },
     {
       "source": "php/report/effective-chart.php",
+      "sourceStatus": "published",
       "sha256": "95a08305bdc03ed8a439e66c7f2bca587fc6185411e4cc5df37613870c3e96e5",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1726,6 +1884,7 @@
     },
     {
       "source": "php/report/effective-table.php",
+      "sourceStatus": "published",
       "sha256": "1f7b31e304f4d2a8bf8883e262bdbc87ab708a60a15d893e28010101448bc442",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1735,6 +1894,7 @@
     },
     {
       "source": "php/report/m35a-chart.php",
+      "sourceStatus": "published",
       "sha256": "0124fa836d1d5ea7caf1340af2cd7d0ff9815d63ed6641093dab279b2b6d4716",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1745,6 +1905,7 @@
     },
     {
       "source": "php/report/m35a-table.php",
+      "sourceStatus": "published",
       "sha256": "92854e3da3c36c890f39c14ad8481bc83a3349a896381a2561a38a0943eff965",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1755,6 +1916,7 @@
     },
     {
       "source": "php/report/m35b-chart.php",
+      "sourceStatus": "published",
       "sha256": "f0e56c991d3618e384d2e3a25f3466003f6a36cf292b5da0652e7730d7361dfc",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1765,6 +1927,7 @@
     },
     {
       "source": "php/report/m35b-table.php",
+      "sourceStatus": "published",
       "sha256": "193db8b00c0ae1a224e83665904aa79c78a4023c74718b604dd7d6fd36cc8625",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1775,6 +1938,7 @@
     },
     {
       "source": "php/report/manage_cityplanX-stage.php",
+      "sourceStatus": "published",
       "sha256": "5f38101bc48851e5cd8bb210c3c6489eb46a233b5bf1f0b2938ad373f320f0c5",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1785,6 +1949,7 @@
     },
     {
       "source": "php/report/manage_cityplanX-ver2(origin).php",
+      "sourceStatus": "archived-unused",
       "sha256": "49c9aba0da9bb4e706df09c4094d8540c574b8c4c398c588de68f7ea135799fc",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1795,6 +1960,7 @@
     },
     {
       "source": "php/report/manage_cityplanX-ver2.php",
+      "sourceStatus": "published",
       "sha256": "ee75d81937aba27261eca61960d8cf81a327affd0ea4a4cb27dbdf67be6a0272",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1805,6 +1971,7 @@
     },
     {
       "source": "php/report/manage_cityplanY.php",
+      "sourceStatus": "archived-unused",
       "sha256": "c06977a62d92bf15b9647f8b5050fef2f2fec9d0de30385efb5886a57f18c1d2",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1815,6 +1982,7 @@
     },
     {
       "source": "php/report/operate-chart.php",
+      "sourceStatus": "published",
       "sha256": "193001046cc4eabad72c528f2d4b76c3b526876927de2723e8cd4a6a51543c97",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1824,6 +1992,7 @@
     },
     {
       "source": "php/report/operate-table.php",
+      "sourceStatus": "published",
       "sha256": "155b113b7d8b2c8ee393461cb470b5423feec1c84d9b25585a79671a3a833a86",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1833,6 +2002,7 @@
     },
     {
       "source": "php/report/operate2-table.php",
+      "sourceStatus": "published",
       "sha256": "ecd590eba11286ee61ad52eb58b0e769e32c1976c67c7478a61afb58006f9c50",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1842,6 +2012,7 @@
     },
     {
       "source": "php/report/operate_plan_show.php",
+      "sourceStatus": "published",
       "sha256": "d06be2a86ace150ad23de2d7088cb45130c08c1f0733a590c26a5528b7545d61",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1852,6 +2023,7 @@
     },
     {
       "source": "php/report/pro_cityplanX-stage.php",
+      "sourceStatus": "published",
       "sha256": "3fba3d2be871f5658c6a1e3c3849879190333c07c8976aa9c9f1ffdf49480943",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1862,6 +2034,7 @@
     },
     {
       "source": "php/report/pro_result-backup.php",
+      "sourceStatus": "archived-unused",
       "sha256": "900bf779565d43d2aa8a69f8d21f969326d07a27e6f852566e8d39fc87e5325c",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1878,6 +2051,7 @@
     },
     {
       "source": "php/report/pro_result.php",
+      "sourceStatus": "published",
       "sha256": "638e90a826b41da7c1c4d9352840fd7ac64babaec35526a6f165521549562647",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1894,6 +2068,7 @@
     },
     {
       "source": "php/report/pro_step_noteY.php",
+      "sourceStatus": "published",
       "sha256": "10458d75b704b68569e53e6767307b05168ab8fa5c5249c992861df826f6178e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1904,6 +2079,7 @@
     },
     {
       "source": "php/report/pro_table_step_noteX.php",
+      "sourceStatus": "archived-unused",
       "sha256": "3ce87de92ec3991f234f7eff0fcc01bc7276a69eca64e132cd7b26abbc805056",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1914,6 +2090,7 @@
     },
     {
       "source": "php/report/pro_table_step_noteXU.php",
+      "sourceStatus": "archived-unused",
       "sha256": "fd522cd6d85fd81ba5af8b0602ae88c67b92accab9541bc9c56f556e8bc1b68a",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1924,6 +2101,7 @@
     },
     {
       "source": "php/report/report_another.php",
+      "sourceStatus": "published",
       "sha256": "015743e6b440ccf9503a3cd66f73c5061f9c4e39de2fc17d33c6bf151a6d0621",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1934,6 +2112,7 @@
     },
     {
       "source": "php/report/report_another_pro.php",
+      "sourceStatus": "published",
       "sha256": "4944584691c4843f1ecd797048fa4a17a6a0bcfdbbb20c992614d1a3a11c58d2",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1944,6 +2123,7 @@
     },
     {
       "source": "php/report/show_detail_x.php",
+      "sourceStatus": "published",
       "sha256": "aa9b8f178d3a533b6e38eb4c5e85d1922ea76f73c2760e4fbccb4d575d05d4a5",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1954,6 +2134,7 @@
     },
     {
       "source": "php/report/show_detail_x_pro.php",
+      "sourceStatus": "published",
       "sha256": "577ff65ab9266b3abdf22fd47c83cb646ca5c000ca7f9164830a132ebd84141e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1964,6 +2145,7 @@
     },
     {
       "source": "php/report/show_optx.php",
+      "sourceStatus": "published",
       "sha256": "e1c4553f17d9f50d8429e6bc31e1ce70cba24b471029bdf4d921de4254ced809",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1977,6 +2159,7 @@
     },
     {
       "source": "php/report/show_result.php",
+      "sourceStatus": "published",
       "sha256": "3d3eaf378991f3cf5c761004f28aef4d0a19d397f5b61214ec7501698a2ebbd7",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1987,6 +2170,7 @@
     },
     {
       "source": "php/report/stage-chart.php",
+      "sourceStatus": "published",
       "sha256": "e1a27bc4b73a231b92a171220c1e8d2c917b7bd5bfc28272a425eab04efcc481",
       "classification": "functional-replacement",
       "featureIds": [
@@ -1996,6 +2180,7 @@
     },
     {
       "source": "php/report/stage-table.php",
+      "sourceStatus": "published",
       "sha256": "2dc57577b9d1491a42aa2a44d47d143eefd8e7f7e26c721f4348d361cbd8abf1",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2005,6 +2190,7 @@
     },
     {
       "source": "php/report/status-chart.php",
+      "sourceStatus": "published",
       "sha256": "5ce4e36321067d1e1597cc5bd1e96ac6ebeae98314a8dbebd0e3e4771324bcbe",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2014,6 +2200,7 @@
     },
     {
       "source": "php/report/status-table.php",
+      "sourceStatus": "published",
       "sha256": "0f2563bc9a7ace2f35941b8aa9be385b55ee9cef1c00b805f4d9eff2220cabc3",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2023,6 +2210,7 @@
     },
     {
       "source": "php/report/step-chart.php",
+      "sourceStatus": "published",
       "sha256": "d5ad17ee26713f7b8af9dcf3dd4ce95831e49756388a6bc2e41e1002536a312e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2032,6 +2220,7 @@
     },
     {
       "source": "php/report/step-table.php",
+      "sourceStatus": "published",
       "sha256": "16672d3978fbaa8c341f8fc88f055a4a1a65ef4e79ac60ed6bfd58fb3992b088",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2041,6 +2230,7 @@
     },
     {
       "source": "php/report/step2-chart.php",
+      "sourceStatus": "published",
       "sha256": "b56efb716394e1ed932ea24d22d0213e9a73b3d7f130fc250ff14980a95dfaf7",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2050,6 +2240,7 @@
     },
     {
       "source": "php/report/step2-table.php",
+      "sourceStatus": "published",
       "sha256": "18b72d84af097d75bad539265fecc7125344e121fa1087895ef5d5ce737647e8",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2059,6 +2250,7 @@
     },
     {
       "source": "php/report/table_SSR.php",
+      "sourceStatus": "archived-unused",
       "sha256": "6c021c93f436111d5057b47bf31bbbffc877dea72bf87c88ec0e6f3af64ae5c7",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2081,6 +2273,7 @@
     },
     {
       "source": "php/report/table_SSR2.php",
+      "sourceStatus": "archived-unused",
       "sha256": "24651cd79018a44b9815b2b4c3735f92fef718f42e3e1b58e5e423a0cf3abab0",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2099,6 +2292,7 @@
     },
     {
       "source": "php/report/table_SSR_chart_aff.php",
+      "sourceStatus": "archived-unused",
       "sha256": "8e1826b4d63f714b4f5f9f1d78c3b443c7e304b9ed27a4aa23cd1f5c0984c9c1",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2108,6 +2302,7 @@
     },
     {
       "source": "php/report/table_SSR_chart_opt.php",
+      "sourceStatus": "published",
       "sha256": "742f08e1fedf820592258c7122914c51a8dc1c4c0a313ab224cb322cc3e5db15",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2117,6 +2312,7 @@
     },
     {
       "source": "php/report/table_SSR_chart_scope.php",
+      "sourceStatus": "archived-unused",
       "sha256": "9cde317c35da635f6e5c50aa649a3fdc612b99b0081463aa4f87b34fb8af2595",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2126,6 +2322,7 @@
     },
     {
       "source": "php/report/table_step_note.php",
+      "sourceStatus": "published",
       "sha256": "5709446cd60d079ed1a45b29d6f421a7a6b035987a646355ac4659988d73d454",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2136,6 +2333,7 @@
     },
     {
       "source": "php/report/table_step_noteX.php",
+      "sourceStatus": "archived-unused",
       "sha256": "41ce0d9bb0dab497f5fc1229104f757a0d2ffa4dc0a4c5748ff5f0d3c711df72",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2146,6 +2344,7 @@
     },
     {
       "source": "php/report/table_step_noteY.php",
+      "sourceStatus": "published",
       "sha256": "210cd5f12225d1145bbe23c0467b1cf99c1c4b1e0169ac30f16c035ca2f3813d",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2156,6 +2355,7 @@
     },
     {
       "source": "php/report/tree-chart-cityplan.php",
+      "sourceStatus": "published",
       "sha256": "709f1ddc80ab1e68594867bbfd3c71eb54cbb09045284221e6a754a4feafb1dd",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2166,6 +2366,7 @@
     },
     {
       "source": "php/report/tree-chart-eva.php",
+      "sourceStatus": "published",
       "sha256": "c5ef5acd0949e332025d30edc62d8a397624f73c76bd8ccd8ee08a2e9bfae12f",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2176,6 +2377,7 @@
     },
     {
       "source": "php/report/tree-chart-pro_cityplan-backup.php",
+      "sourceStatus": "archived-unused",
       "sha256": "6e65b2006823cf50b8d68d3cfaf0d99ab8b6df78d8b40562e35578665630f59a",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2186,6 +2388,7 @@
     },
     {
       "source": "php/report/tree-chart-pro_cityplan.php",
+      "sourceStatus": "published",
       "sha256": "2b39873a302bb09f947746bbb3875fc60f13e3d253ccffea5bdc14c59be6b343",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2196,6 +2399,7 @@
     },
     {
       "source": "php/report/tree-chart.php",
+      "sourceStatus": "published",
       "sha256": "e29c85f0f6f9997d4581d9d04cc7ceb0307cbd5ae8cd3122d7a9db254c355a31",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2205,6 +2409,7 @@
     },
     {
       "source": "php/report/tree-chart2.php",
+      "sourceStatus": "published",
       "sha256": "59f7692688a2bf036018ad4d9d0e5cf2caf186f2d171758e649d63f98d0b39c7",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2214,6 +2419,7 @@
     },
     {
       "source": "php/report/tree-chart3.php",
+      "sourceStatus": "archived-unused",
       "sha256": "faa60bff4849438ae55a81cd0897b9663b384dec3404f49d17a4e2a9ebe0d617",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2223,6 +2429,7 @@
     },
     {
       "source": "php/report/type-chart.php",
+      "sourceStatus": "published",
       "sha256": "ec5940fe726c616fbf43c7d36f3fdb640ed86dea51275872bea35ddc900fd018",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2232,6 +2439,7 @@
     },
     {
       "source": "php/report/type-table.php",
+      "sourceStatus": "published",
       "sha256": "d0adf30c019f2c8bd3a6dc63421365cb2c3b61f74dd4fbead27e50df2dfbb94b",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2241,6 +2449,7 @@
     },
     {
       "source": "php/report/user_step_note.php",
+      "sourceStatus": "published",
       "sha256": "107e73c24cd51b4b9d4b07ca08acddc7b7e84f264910eda69d492d92de12d78b",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2251,6 +2460,7 @@
     },
     {
       "source": "php/statusCityplan.php",
+      "sourceStatus": "published",
       "sha256": "2dc404d6787d58122cc21f6fd1a900d7c7ecabe009efb55cf2e86912ceff578e",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2263,6 +2473,7 @@
     },
     {
       "source": "php/sun.php",
+      "sourceStatus": "archived-unused",
       "sha256": "93ffdb575e789786da7615acf5a30b6bc4ec08c5a3881d2dd6400fccb57bd6c3",
       "classification": "no-business-behavior",
       "featureIds": [],
@@ -2271,6 +2482,7 @@
     },
     {
       "source": "php/tree_chart2/index.php",
+      "sourceStatus": "archived-unused",
       "sha256": "8d9b578de2823ff87f6246f6c23aa499551e1a83f325ba71d7414ba0dfa06539",
       "classification": "functional-replacement",
       "featureIds": [
@@ -2280,6 +2492,7 @@
     },
     {
       "source": "php/tree_chart2/new 1.php",
+      "sourceStatus": "archived-unused",
       "sha256": "923a267dd3a680deccfb449d1add73c3c92077db0c2f049f6704f7939c27d5cd",
       "classification": "functional-replacement",
       "featureIds": [

@@ -33,17 +33,25 @@ const exclusions: Record<string, { classification: string; reason: string }> = {
 
 export function auditMigration(repoDirectory = path.resolve(__dirname, '../../../..')) {
   const project = path.join(repoDirectory, 'project-typescript-react-express-nodejs-api');
-  const sources = execFileSync('git', ['ls-files', '--', 'php/*.php', 'php/**/*.php'], { cwd: repoDirectory, encoding: 'utf8', windowsHide: true }).trim().split(/\r?\n/).filter(Boolean);
+  const published = execFileSync('git', ['ls-files', '--', 'php/*.php', 'php/**/*.php'], { cwd: repoDirectory, encoding: 'utf8', windowsHide: true }).trim().split(/\r?\n/).filter(Boolean);
+  const manifestPath = path.join(repoDirectory, 'php/docs/runtime-files.json');
+  const archive: { sourceCommit: string; archived: { path: string; sha256: string; legacyEvents: string[] }[] } = existsSync(manifestPath)
+    ? JSON.parse(readFileSync(manifestPath, 'utf8')) : { sourceCommit: '', archived: [] };
+  const archived = new Map(archive.archived.filter(file => !published.includes(file.path)).map(file => [file.path, file]));
+  const sources = [...new Set([...published, ...archived.keys()])].sort();
   const files = sources.map(source => {
     const relative = source.slice(4);
-    const content = readFileSync(path.join(repoDirectory, source), 'utf8').replace(/\r\n/g, '\n');
+    const historical = archived.get(source);
+    // Archived files need not exist in a fresh clone. Use the recorded source
+    // fingerprint/events, not an ignored local copy that could drift over time.
+    const content = historical ? '' : readFileSync(path.join(repoDirectory, source), 'utf8').replace(/\r\n/g, '\n');
     const excluded = exclusions[relative];
     const features = excluded ? [] : replacements.filter(replacement => replacement.source.test(relative));
-    const events = [...new Set([...content.matchAll(/\$_POST\[['"]event['"]\]\s*={2,3}\s*(['"])([^'"]+)\1/g)].map(match => match[2]))];
-    return { source, sha256: createHash('sha256').update(content).digest('hex'), classification: excluded?.classification ?? (features.length ? 'functional-replacement' : 'unmapped'), featureIds: features.map(feature => feature.id), legacyEvents: events, ...(excluded ? { reason: excluded.reason } : {}) };
+    const events = historical?.legacyEvents ?? [...new Set([...content.matchAll(/\$_POST\[['"]event['"]\]\s*={2,3}\s*(['"])([^'"]+)\1/g)].map(match => match[2]))];
+    return { source, sourceStatus: historical ? 'archived-unused' : 'published', sha256: historical?.sha256 ?? createHash('sha256').update(content).digest('hex'), classification: excluded?.classification ?? (features.length ? 'functional-replacement' : 'unmapped'), featureIds: features.map(feature => feature.id), legacyEvents: events, ...(excluded ? { reason: excluded.reason } : {}) };
   });
   const missingTargets = replacements.flatMap(feature => feature.targets.filter(target => !existsSync(path.join(project, target))).map(target => `${feature.id}: ${target}`));
-  const report = { schemaVersion: 1, scope: 'Tracked PHP sources in this repository; alternate layouts share functional replacements. This inventory links source files to implementations; behavior is verified separately by API, domain and browser tests.', totalPhpFiles: files.length,
+  const report = { schemaVersion: 2, scope: 'Published PHP sources plus historical sources explicitly archived in php/docs/runtime-files.json. Source status distinguishes current files from historical fingerprints; alternate layouts share functional replacements. Behavior is verified separately by API, domain and browser tests.', archivedSourceCommit: archive.sourceCommit, publishedPhpFiles: published.length, archivedPhpFiles: archived.size, totalPhpFiles: files.length,
     functionalFiles: files.filter(file => file.classification === 'functional-replacement').length, referenceOrNonfunctionalFiles: files.filter(file => file.classification !== 'functional-replacement' && file.classification !== 'unmapped').length,
     legacyEvents: files.reduce((sum, file) => sum + file.legacyEvents.length, 0), unmapped: files.filter(file => file.classification === 'unmapped').map(file => file.source), missingTargets,
     features: replacements.map(({ source: _pattern, ...feature }) => feature), files };
@@ -56,6 +64,6 @@ if (require.main === module) {
     const directory = path.resolve(__dirname, '../../../docs'); mkdirSync(directory, { recursive: true });
     writeFileSync(path.join(directory, 'migration-inventory.json'), JSON.stringify(report, null, 2) + '\n');
   }
-  console.log(JSON.stringify({ totalPhpFiles: report.totalPhpFiles, functionalFiles: report.functionalFiles, referenceOrNonfunctionalFiles: report.referenceOrNonfunctionalFiles, legacyEvents: report.legacyEvents, unmapped: report.unmapped, missingTargets: report.missingTargets }, null, 2));
+  console.log(JSON.stringify({ totalPhpFiles: report.totalPhpFiles, publishedPhpFiles: report.publishedPhpFiles, archivedPhpFiles: report.archivedPhpFiles, functionalFiles: report.functionalFiles, referenceOrNonfunctionalFiles: report.referenceOrNonfunctionalFiles, legacyEvents: report.legacyEvents, unmapped: report.unmapped, missingTargets: report.missingTargets }, null, 2));
   if (report.unmapped.length || report.missingTargets.length) process.exitCode = 1;
 }
