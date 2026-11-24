@@ -10,6 +10,12 @@ import { Sidebar } from './components/Sidebar';
 import { DirectoryPage } from './components/DirectoryPage';
 import { StepsPage } from './components/StepsPage';
 import { WorkspacePage } from './components/WorkspacePage';
+import { DataTransferPage } from './components/DataTransferPage';
+import { ModulePage } from './components/ModulePage';
+import { ReportCatalogPage } from './components/ReportCatalogPage';
+import { InteractiveMap } from './components/InteractiveMap';
+import { AccountsPage, AuthPanel } from './components/AuthPanel';
+import { HistoryPage, SystemPage } from './components/SystemPages';
 import { directoryTabs, DirectoryKind, getTab, menuItems, NavTab } from './data/navigation';
 import {
   ActivityLog,
@@ -57,6 +63,11 @@ export function App() {
   const [logs, setLogs] = useState<ActivityLog[]>([]);
   const [steps, setSteps] = useState<StepDefinition[]>([]);
   const [provinces, setProvinces] = useState<ProvinceInfo[]>([]);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(100);
+  useEffect(() => { setPage(1); }, [plans]);
+  const pageCount = Math.max(1, Math.ceil(plans.length / pageSize));
+  const visiblePlans = plans.slice((Math.min(page, pageCount) - 1) * pageSize, Math.min(page, pageCount) * pageSize);
 
   const [search, setSearch] = useState('');
   const [filterRegion, setFilterRegion] = useState<string>('');
@@ -120,10 +131,10 @@ export function App() {
     return () => { requestVersion.current++; };
   }, [loadAll, tab, refreshToken]);
 
-  const handleResetMock = async () => {
+  const handleResetDatabase = async () => {
     if (!window.confirm('คืนค่าข้อมูลทั้งหมดเป็นค่าเริ่มต้นหรือไม่? การแก้ไขข้อมูลในระบบจะถูกล้าง')) return;
     try {
-      await api.resetMockDb();
+      await api.resetDatabase();
       setFilterRegion('');
       setFilterKeth('');
       setFilterHealth('');
@@ -197,6 +208,7 @@ export function App() {
         </select>
       </div>
 
+      <div className="inline-controls unprintable"><label>รายการต่อหน้า <select aria-label="จำนวนรายการต่อหน้า" value={pageSize} onChange={event => { setPageSize(Number(event.target.value)); setPage(1); }}>{[25, 50, 100].map(size => <option key={size} value={size}>{size}</option>)}</select></label><button className="btn-sm" disabled={page <= 1} onClick={() => setPage(value => value - 1)}>ก่อนหน้า</button><span>หน้า {Math.min(page, pageCount)} / {pageCount} · {plans.length} รายการ</span><button className="btn-sm" disabled={page >= pageCount} onClick={() => setPage(value => value + 1)}>ถัดไป</button></div>
       <div className="table-wrap">
         <table className="data-table">
           <thead>
@@ -219,7 +231,7 @@ export function App() {
                 </td>
               </tr>
             ) : (
-              plans.map((p) => (
+              visiblePlans.map((p) => (
                 <tr key={p.id}>
                   <td>
                     <span className="code-pill">{p.code}</span>
@@ -281,7 +293,7 @@ export function App() {
           <span className="mainname">ระบบการติดตามงานวางและจัดทำผังเมือง</span>
           <div className="navbar-custom-menu">
             <ul className="nav navbar-nav"><li className="user user-menu">
-              <span className="database-mode"><i className="fa fa-user" aria-hidden="true" /> <span>เจ้าหน้าที่ผังเมือง</span></span>
+              <AuthPanel />
             </li></ul>
           </div>
         </nav>
@@ -323,7 +335,14 @@ export function App() {
 
               {directoryTabs.includes(tab as DirectoryKind) && <DirectoryPage key={tab} kind={tab as DirectoryKind} onUpdated={loadAll} />}
               {tab === 'steps' && <StepsPage steps={steps} plans={plans} onUpdated={loadAll} />}
-              {!['dashboard', 'plans', 'm35', 'evaluation', 'logs', 'steps', ...directoryTabs].includes(tab) &&
+              {tab === 'import' && <DataTransferPage onImported={loadAll} />}
+              {tab.startsWith('module-') && <ModulePage key={tab} kind={tab.slice(7)} onUpdated={loadAll} />}
+              {tab === 'catalog' && <ReportCatalogPage onOpenPlan={setSelectedPlanId} />}
+              {tab === 'map' && <InteractiveMap plans={plans} onOpenPlan={setSelectedPlanId} />}
+              {tab === 'accounts' && <AccountsPage />}
+              {tab === 'system' && <SystemPage />}
+              {tab === 'history' && <HistoryPage onOpenPlan={setSelectedPlanId} />}
+              {!tab.startsWith('module-') && !['dashboard', 'plans', 'm35', 'evaluation', 'logs', 'steps', 'import', 'catalog', 'map', 'accounts', 'system', 'history', ...directoryTabs].includes(tab) &&
                 <WorkspacePage key={tab} tab={tab} plans={plans} regions={regions} steps={steps} onOpenPlan={setSelectedPlanId} />}
 
               {tab === 'logs' && (
@@ -335,7 +354,7 @@ export function App() {
                         บันทึกการเพิ่ม แก้ไข ลบ และอัปเดตข้อมูลในระบบ
                       </p>
                     </div>
-                    <button className="btn-secondary" onClick={handleResetMock}>คืนค่าข้อมูลเริ่มต้น</button>
+                    <button className="btn-secondary" onClick={handleResetDatabase}>คืนค่าข้อมูลเริ่มต้น</button>
                   </div>
                   <div className="table-wrap">
                     <table className="data-table">

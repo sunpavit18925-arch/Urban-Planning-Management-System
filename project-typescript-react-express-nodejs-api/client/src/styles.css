@@ -601,6 +601,33 @@ select {
   color: var(--muted);
 }
 
+.data-transfer > form, .data-transfer > section { margin: 20px 0; }
+.data-transfer section > button { margin-top: 16px; }
+.data-transfer input[type="file"], .section-box input[type="file"] { max-width: 100%; }
+.data-transfer .inline-controls label, .section-box .inline-controls label { min-width: 0; }
+.attachment-list { padding-left: 20px; overflow-wrap: anywhere; }
+.attachment-list li { margin: 10px 0; }
+.attachment-list span { color: var(--muted); }
+.note-item summary { cursor: pointer; }
+.module-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 16px 0; }
+.module-form-grid label { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.module-form-grid input, .module-form-grid select, .module-form-grid textarea { width: 100%; min-width: 0; padding: 8px; border: 1px solid #cbd5e1; border-radius: 3px; }
+.module-form-grid input[type=checkbox] { width: 20px; height: 20px; }
+.module-form-grid select[multiple] { min-height: 120px; }
+.module-page .inline-controls { margin-bottom: 16px; }
+.module-page .actions-cell { flex-wrap: wrap; }
+.maintenance-warranty { background: #e8f5e9; }
+.maintenance-replacement { background: #fff3cd; }
+.catalog-chart > button { display: grid; grid-template-columns: 180px 1fr; gap: 16px; width: 100%; padding: 10px; border: 0; background: transparent; text-align: left; }
+.catalog-bar { display: block; background: #316aa5; color: white; padding: 4px 10px; min-width: 30px; }
+.map-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr); gap: 20px; }
+.interactive-map svg { width: 100%; height: 650px; touch-action: none; background: #eef7fb; }
+.interactive-map path { cursor: pointer; }
+.interactive-map path:focus { outline: none; stroke: #111827; stroke-width: 3px; }
+.auth-menu-button { background: transparent; border: none; color: white; padding: 15px; font: inherit; cursor: pointer; }
+@media (max-width: 700px) { .map-layout { grid-template-columns: minmax(0, 1fr); } .interactive-map svg { height: 480px; } }
+@media (max-width: 600px) { .module-form-grid { grid-template-columns: minmax(0, 1fr); } .catalog-chart > button { grid-template-columns: 110px 1fr; } }
+
 
 @media print {
   #myBtn, .main-header, .main-sidebar, .unprintable { display: none !important; }

@@ -33,6 +33,13 @@ export interface PlanNote {
   author: string;
   content: string;
   createdAt: string;
+  updatedAt?: string;
+  categoryId?: number;
+  step?: number;
+  subStep?: number;
+  thirdStep?: number;
+  caseId?: number;
+  active?: boolean;
 }
 
 export interface UrbanPlan {
@@ -47,7 +54,7 @@ export interface UrbanPlan {
   planType: 'ผังเมืองรวมจังหวัด' | 'ผังเมืองรวมเมือง/ชุมชน';
   scope: 'ทั่วทั้งอำเภอ' | 'เฉพาะพื้นที่';
   owner: 'กรม' | 'อปท.';
-  operator: 'กรม' | 'อปท.' | 'จ้างที่ปรึกษา' | 'กรมร่วมอปท.';
+  operator: 'กรม' | 'อปท.' | 'จ้างที่ปรึกษา' | 'กรมร่วมอปท.' | 'ร่วมดำเนินการ' | 'อื่นๆ' | 'ไม่ระบุ';
   budgetYear: string;
   stage: PlanStage;
   category: PlanCategory;
@@ -61,12 +68,18 @@ export interface UrbanPlan {
   isEec: boolean;
   nextStepPending?: boolean;
   trackingState?: 'unspecified' | 'draft_law' | 'revisit' | 'act' | 'expedite';
+  thirdStep?: number;
+  petition?: boolean;
+  considerId?: number;
+  publishedOn?: string;
+  expiredOn?: string;
+  externalCode?: string;
 }
 
 export interface ActivityLog {
   id: number;
   actor: string;
-  action: 'CREATE' | 'UPDATE' | 'DELETE' | 'NOTE' | 'RESET';
+  action: 'CREATE' | 'UPDATE' | 'DELETE' | 'NOTE' | 'RESET' | 'IMPORT' | 'ATTACHMENT';
   target: string;
   detail: string;
   createdAt: string;

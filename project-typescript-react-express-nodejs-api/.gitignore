@@ -6,3 +6,4 @@ server/dist/
 .qa/
 *.tsbuildinfo
 .tmp/
+server/data/

@@ -4,6 +4,7 @@ import { once } from 'node:events';
 
 // Use a separate in-memory database and ephemeral port, preserving the
 // running application's data. Compile the server before invoking this file.
+process.env.UPMS_DB_PATH = ':memory:';
 const require = createRequire(new URL('../server/package.json', import.meta.url));
 const express = require('express');
 const router = require('./dist/routes/api.js').default;

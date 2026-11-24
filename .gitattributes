@@ -1,0 +1,23 @@
+# Keep geographic datasets out of source-language percentages.
+php/js/province.js -linguist-detectable
+php/js/provinces.js -linguist-detectable
+php/js/provinces.php -linguist-detectable
+
+# Bundled third-party libraries, including paths Linguist may not recognize.
+php/bower_components/** linguist-vendored
+php/ChartJs/** linguist-vendored
+php/export/** linguist-vendored
+php/leaflet/** linguist-vendored
+php/plugins/** linguist-vendored
+php/js/bootstrap.js linguist-vendored
+php/js/export.js linguist-vendored
+php/js/jquery* linguist-vendored
+php/js/jspdf.umd.min.js linguist-vendored
+php/tree_chart/js/owl.carousel* linguist-vendored
+php/tree_chart2/js/owl.carousel* linguist-vendored
+project-typescript-react-express-nodejs-api/client/public/php/ChartJs/** linguist-vendored
+
+# Reference modules generated from PHP templates and seed data.
+project-typescript-react-express-nodejs-api/client/src/data/phpReference.ts linguist-generated
+project-typescript-react-express-nodejs-api/client/src/data/treeReportTemplate.ts linguist-generated
+project-typescript-react-express-nodejs-api/server/src/data/provinces.ts linguist-generated

@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { api } from '../api/client';
 import { PlanHealth, PlanNote, StepDefinition, UrbanPlan } from '../types/plan';
 import { HealthBadge } from './HealthBadge';
+import { PlanFiles } from './PlanFiles';
+import { PlanHistory } from './PlanHistory';
+import { PlanMetadataEditor } from './PlanMetadataEditor';
+import { PlanWorkflow } from './PlanWorkflow';
+import { DirectoryRecord } from '../data/navigation';
 
 interface PlanDetailModalProps {
   planId: number;
@@ -23,6 +28,8 @@ export const PlanDetailModal: React.FC<PlanDetailModalProps> = ({
   const [health, setHealth] = useState<PlanHealth>('on_track');
   const [trackingState, setTrackingState] = useState<NonNullable<UrbanPlan['trackingState']>>('unspecified');
   const [noteText, setNoteText] = useState('');
+  const [noteCategories, setNoteCategories] = useState<DirectoryRecord[]>([]);
+  const [noteCategory, setNoteCategory] = useState(0);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
@@ -45,6 +52,7 @@ export const PlanDetailModal: React.FC<PlanDetailModalProps> = ({
 
   useEffect(() => {
     loadDetail();
+    void api.getDirectory('noteCategories').then(setNoteCategories).catch(error => setError(error.message));
   }, [planId]);
 
   const handleSaveProgress = async () => {
@@ -79,7 +87,7 @@ export const PlanDetailModal: React.FC<PlanDetailModalProps> = ({
     if (!plan || !noteText.trim()) return;
     setSaving(true);
     try {
-      await api.addNote(plan.id, 'เจ้าหน้าที่ผังเมือง', noteText);
+      await api.addNote(plan.id, 'เจ้าหน้าที่ผังเมือง', noteText, noteCategory);
       setNoteText('');
       await loadDetail();
       await onUpdated();
@@ -193,9 +201,14 @@ export const PlanDetailModal: React.FC<PlanDetailModalProps> = ({
                 </div>
               </div>
 
+              <PlanFiles key={plan.id} planId={plan.id} />
+              <PlanMetadataEditor key={`${plan.id}:${plan.updatedAt}`} plan={plan} onSaved={async () => { await loadDetail(); await onUpdated(); }} />
+              <PlanWorkflow planId={plan.id} onNavigate={kind => { window.location.hash = `module-${kind}/plan/${plan.id}`; onClose(); }} />
+              <PlanHistory planId={plan.id} updatedAt={plan.updatedAt} />
               <div className="section-box">
                 <h4>หมายเหตุ / บันทึกการติดตาม ({notes.length})</h4>
-                <form onSubmit={handleAddNote} className="inline-controls">
+                <form onSubmit={handleAddNote} className="inline-controls" aria-label="เพิ่มหมายเหตุ">
+                  <select aria-label="หมวดหมู่หมายเหตุ" value={noteCategory} onChange={event => setNoteCategory(Number(event.target.value))}><option value="0">ไม่ระบุหมวดหมู่</option>{noteCategories.filter(category => category.active).map(category => <option key={category.id} value={category.id}>{category.name}</option>)}</select>
                   <input
                     type="text"
                     placeholder="เพิ่มหมายเหตุใหม่..."
@@ -217,6 +230,8 @@ export const PlanDetailModal: React.FC<PlanDetailModalProps> = ({
                           <span>{new Date(n.createdAt).toLocaleString('th-TH')}</span>
                         </div>
                         <p>{n.content}</p>
+                        {n.categoryId ? <small>{noteCategories.find(category => category.id === n.categoryId)?.name} · ขั้นตอน {n.step ?? 0}.{n.subStep ?? 0}</small> : null}
+                        <div className="inline-controls"><button className="btn-sm" disabled={saving} onClick={async () => { const text = window.prompt('แก้ไขหมายเหตุ', n.content); if (!text?.trim()) return; setSaving(true); try { await api.editNote(n.id, text); await loadDetail(); await onUpdated(); } catch (error) { setError(error instanceof Error ? error.message : 'แก้ไขไม่ได้'); } finally { setSaving(false); } }}>แก้ไข</button><button className="btn-sm btn-danger" disabled={saving} onClick={async () => { if (!window.confirm('ลบหมายเหตุนี้หรือไม่?')) return; setSaving(true); try { await api.deleteNote(n.id); await loadDetail(); await onUpdated(); } catch (error) { setError(error instanceof Error ? error.message : 'ลบไม่ได้'); } finally { setSaving(false); } }}>ลบ</button></div>
                       </div>
                     ))
                   )}

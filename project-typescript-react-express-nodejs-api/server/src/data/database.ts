@@ -1,4 +1,10 @@
 import { PROVINCES } from './provinces';
+import path from 'node:path';
+import { randomUUID } from 'node:crypto';
+import { DatabaseState, SqliteStore } from '../storage/sqlite';
+import { PlanAttachment, PlanHistory } from '../types/operations';
+import { ModuleRecord } from '../types/modules';
+import { requestContext } from '../services/requestContext';
 import { createDirectories, DirectoryKind, DirectoryRecord } from './directories';
 import {
   ActivityLog,
@@ -173,7 +179,7 @@ function createInitialLogs(): ActivityLog[] {
   ];
 }
 
-class MockDatabase {
+export class UrbanPlanDatabase {
   private plans: UrbanPlan[] = createInitialPlans();
   private notes: PlanNote[] = createInitialNotes();
   private logs: ActivityLog[] = createInitialLogs();
@@ -182,16 +188,71 @@ class MockDatabase {
   private nextLogId = 2;
   private directories = createDirectories();
   private steps = STEP_DEFINITIONS.map(step => ({ ...step }));
+  private history: PlanHistory[] = [];
+  private nextHistoryId = 1;
+  private readonly store: SqliteStore;
+  private batchDepth = 0;
+
+  constructor(filename = process.env.UPMS_DB_PATH ?? path.resolve(__dirname, '../../data/upms.sqlite')) {
+    this.store = new SqliteStore(filename);
+    const existing = this.store.load();
+    if (existing) this.restore(existing);
+    else this.persist();
+  }
+
+  private restore(state: DatabaseState): void {
+    this.plans = state.plans; this.notes = state.notes; this.logs = state.logs;
+    this.steps = state.steps; this.directories = state.directories; this.history = state.history;
+    this.nextPlanId = state.nextPlanId; this.nextNoteId = state.nextNoteId;
+    this.nextLogId = state.nextLogId; this.nextHistoryId = state.nextHistoryId;
+  }
+
+  private persist(): void {
+    if (this.batchDepth) return;
+    try {
+      this.store.save({ plans: this.plans, notes: this.notes, logs: this.logs, steps: this.steps,
+        directories: this.directories, history: this.history, nextPlanId: this.nextPlanId,
+        nextNoteId: this.nextNoteId, nextLogId: this.nextLogId, nextHistoryId: this.nextHistoryId });
+    } catch (error) {
+      const state = this.store.load();
+      if (state) this.restore(state);
+      throw error;
+    }
+  }
+
+  transaction<T>(work: () => T): T {
+    try {
+      return this.store.transaction(() => {
+        this.batchDepth++;
+        let result: T;
+        try { result = work(); } finally { this.batchDepth--; }
+        this.persist();
+        return result;
+      });
+    } catch (error) {
+      const state = this.store.load();
+      if (state) this.restore(state);
+      throw error;
+    }
+  }
+
+  close(): void { this.store.close(); }
 
   reset(): void {
-    this.plans = createInitialPlans();
-    this.notes = createInitialNotes();
-    this.logs = createInitialLogs();
-    this.nextPlanId = this.plans.length + 1;
-    this.nextNoteId = 3;
-    this.nextLogId = 2;
-    this.directories = createDirectories();
-    this.steps = STEP_DEFINITIONS.map(step => ({ ...step }));
+    this.transaction(() => {
+      this.plans = createInitialPlans();
+      this.notes = createInitialNotes();
+      this.logs = createInitialLogs();
+      this.nextPlanId = this.plans.length + 1;
+      this.nextNoteId = 3;
+      this.nextLogId = 2;
+      this.directories = createDirectories();
+      this.steps = STEP_DEFINITIONS.map(step => ({ ...step }));
+      this.history = [];
+      this.nextHistoryId = 1;
+      this.store.clearAttachments();
+      this.store.clearModules();
+    });
   }
 
   getSteps(): StepDefinition[] { return this.steps; }
@@ -205,7 +266,7 @@ class MockDatabase {
   }
 
   getNotes(): Array<PlanNote & { planName: string; planCode: string }> {
-    return this.notes.map(note => {
+    return this.notes.filter(note => note.active !== false).map(note => {
       const plan = this.plans.find(plan => plan.id === note.planId)!;
       return { ...note, planName: plan.name, planCode: plan.code };
     }).sort((a, b) => b.id - a.id);
@@ -239,7 +300,7 @@ class MockDatabase {
 
   getRegions(): Array<RegionInfo & { planCount: number }> {
     return REGIONS.map((region) => {
-      const provinces = PROVINCES.filter((p) => p.regionId === region.id);
+      const provinces = this.getProvinces().filter((p) => p.regionId === region.id);
       const planCount = this.plans.filter((pl) => pl.regionId === region.id).length;
       return {
         ...region,
@@ -250,9 +311,9 @@ class MockDatabase {
   }
 
   getKeths(): Array<{ kethId: number; name: string; regionName: string; color: string; provinces: ProvinceInfo[]; planCount: number }> {
-    const kethIds = Array.from(new Set(PROVINCES.map((p) => p.kethId))).filter(id => id > 0).sort((a, b) => a - b);
+    const kethIds = Array.from(new Set(this.getProvinces().map((p) => p.kethId))).filter(id => id > 0).sort((a, b) => a - b);
     return kethIds.map((kethId) => {
-      const provinces = PROVINCES.filter((p) => p.kethId === kethId);
+      const provinces = this.getProvinces().filter((p) => p.kethId === kethId);
       const firstRegion = REGIONS.find((r) => r.id === provinces[0]?.regionId) ?? REGIONS[0];
       const planCount = this.plans.filter((pl) => pl.kethId === kethId).length;
       return {
@@ -264,6 +325,14 @@ class MockDatabase {
         planCount,
       };
     });
+  }
+
+  getProvinces(): ProvinceInfo[] {
+    const assignments = this.listModules('provinceAssignments');
+    return PROVINCES.map(province => {
+      const assignment = assignments.find(item => item.data.provinceId === province.id);
+      return assignment ? { ...province, name: String(assignment.data.name), regionId: Number(assignment.data.regionId) as RegionId, kethId: Number(assignment.data.kethId), affiliationId: Number(assignment.data.affiliationId) } : province;
+    }).sort((a, b) => Number(assignments.find(item => item.data.provinceId === a.id)?.data.sortOrder ?? a.id) - Number(assignments.find(item => item.data.provinceId === b.id)?.data.sortOrder ?? b.id));
   }
 
   getDashboardSummary(): DashboardSummary {
@@ -346,7 +415,7 @@ class MockDatabase {
   getPlanById(id: number): { plan: UrbanPlan; notes: PlanNote[] } | null {
     const plan = this.plans.find((p) => p.id === id);
     if (!plan) return null;
-    const notes = this.notes.filter((n) => n.planId === id).sort((a, b) => b.id - a.id);
+    const notes = this.notes.filter((n) => n.planId === id && n.active !== false).sort((a, b) => b.id - a.id);
     return { plan, notes };
   }
 
@@ -361,8 +430,17 @@ class MockDatabase {
     currentStep?: number;
     health?: PlanHealth;
     isEec?: boolean;
+    planType?: UrbanPlan['planType'];
+    scope?: UrbanPlan['scope'];
+    effectiveStatus?: UrbanPlan['effectiveStatus'];
+    startDate?: string;
+    publishedOn?: string;
+    expiredOn?: string;
+    externalCode?: string;
+    petition?: boolean;
+    considerId?: number;
   }): UrbanPlan {
-    const province = PROVINCES.find((p) => p.id === Number(input.provinceId)) ?? PROVINCES[0];
+    const province = this.getProvinces().find((p) => p.id === Number(input.provinceId)) ?? PROVINCES[0];
     const region = REGIONS.find((r) => r.id === province.regionId) ?? REGIONS[0];
     const id = this.nextPlanId++;
     const newPlan: UrbanPlan = {
@@ -374,21 +452,25 @@ class MockDatabase {
       regionId: region.id,
       regionName: region.name,
       kethId: province.kethId,
-      planType: 'ผังเมืองรวมเมือง/ชุมชน',
-      scope: 'ทั่วทั้งอำเภอ',
+      planType: input.planType ?? 'ผังเมืองรวมเมือง/ชุมชน',
+      scope: input.scope ?? 'ทั่วทั้งอำเภอ',
       owner: input.owner ?? 'กรม',
       operator: input.operator ?? 'กรม',
       budgetYear: input.budgetYear ?? '2568',
       stage: input.stage ?? 'เปิดใหม่',
       category: input.category ?? 'general',
-      effectiveStatus: 'ยังไม่มีผลบังคับใช้',
+      effectiveStatus: input.effectiveStatus ?? 'ยังไม่มีผลบังคับใช้',
       currentStep: input.currentStep ?? 1,
-      subStep: 1,
+      subStep: input.currentStep === 0 ? 0 : 1,
+      thirdStep: 0,
       health: input.health ?? 'on_track',
       delayDays: input.health === 'slight_delay' ? 10 : input.health === 'moderate_delay' ? 35 : input.health === 'severe_delay' ? 70 : 0,
-      startDate: '2568-02-01',
+      startDate: input.startDate ?? '2568-02-01',
       updatedAt: new Date().toISOString(),
       isEec: Boolean(input.isEec),
+      nextStepPending: false,
+      publishedOn: input.publishedOn ?? '', expiredOn: input.expiredOn ?? '',
+      externalCode: input.externalCode ?? '', petition: Boolean(input.petition), considerId: input.considerId ?? 0,
     };
     this.plans.unshift(newPlan);
     this.addLog('เจ้าหน้าที่ผังเมือง', 'CREATE', newPlan.code, `เพิ่มผังเมือง "${newPlan.name}" (${newPlan.provinceName})`);
@@ -397,7 +479,7 @@ class MockDatabase {
 
   updatePlan(
     id: number,
-    patch: Partial<Pick<UrbanPlan, 'name' | 'currentStep' | 'subStep' | 'health' | 'delayDays' | 'stage' | 'effectiveStatus' | 'category' | 'trackingState'>>
+    patch: Partial<Omit<UrbanPlan, 'id' | 'code' | 'provinceName' | 'regionId' | 'regionName' | 'kethId' | 'updatedAt'>>
   ): UrbanPlan | null {
     const idx = this.plans.findIndex((p) => p.id === id);
     if (idx === -1) return null;
@@ -406,11 +488,25 @@ class MockDatabase {
     const updated: UrbanPlan = {
       ...current,
       ...patch,
-      nextStepPending: patch.currentStep !== undefined && patch.currentStep !== current.currentStep ||
-        patch.subStep !== undefined && patch.subStep !== current.subStep ? false : current.nextStepPending,
+      nextStepPending: patch.nextStepPending ?? (patch.currentStep !== undefined && patch.currentStep !== current.currentStep ||
+        patch.subStep !== undefined && patch.subStep !== current.subStep ? false : current.nextStepPending),
       updatedAt: new Date().toISOString(),
     };
+    if (updated.currentStep === 0) { updated.subStep = 0; updated.thirdStep = 0; }
+    else if (updated.subStep === 0) updated.thirdStep = 0;
+    if (patch.provinceId !== undefined) {
+      const province = PROVINCES.find(item => item.id === patch.provinceId);
+      if (!province) throw new Error('ไม่พบจังหวัด');
+      const assignment = this.listModules('provinceAssignments').find(item => item.data.provinceId === province.id);
+      updated.provinceName = String(assignment?.data.name ?? province.name);
+      updated.regionId = Number(assignment?.data.regionId ?? province.regionId) as RegionId;
+      updated.regionName = REGIONS.find(item => item.id === updated.regionId)!.name;
+      updated.kethId = Number(assignment?.data.kethId ?? province.kethId);
+    }
     this.plans[idx] = updated;
+    const changedFields = Object.keys(updated).filter(key => key !== 'updatedAt' && current[key as keyof UrbanPlan] !== updated[key as keyof UrbanPlan]);
+    if (changedFields.length) this.history.unshift({ id: this.nextHistoryId++, planId: id,
+      changedAt: updated.updatedAt, before: { ...current }, after: { ...updated }, changedFields, actor: requestContext.getStore()?.actor ?? 'เจ้าหน้าที่ผังเมือง' });
     this.addLog('เจ้าหน้าที่ผังเมือง', 'UPDATE', updated.code, `อัปเดตสถานะ "${updated.name}" เป็นขั้นตอนที่ ${updated.currentStep}.${updated.subStep}`);
     return updated;
   }
@@ -420,19 +516,22 @@ class MockDatabase {
     if (idx === -1) return false;
     const [removed] = this.plans.splice(idx, 1);
     this.notes = this.notes.filter((n) => n.planId !== id);
+    this.history = this.history.filter(item => item.planId !== id);
     this.addLog('เจ้าหน้าที่ผังเมือง', 'DELETE', removed.code, `ลบผังเมือง "${removed.name}"`);
     return true;
   }
 
-  addNote(planId: number, author: string, content: string): PlanNote | null {
+  addNote(planId: number, author: string, content: string, metadata: Partial<Pick<PlanNote, 'categoryId' | 'step' | 'subStep' | 'thirdStep' | 'caseId'>> = {}): PlanNote | null {
     const plan = this.plans.find((p) => p.id === planId);
     if (!plan) return null;
     const note: PlanNote = {
       id: this.nextNoteId++,
       planId,
-      author: author.trim() || 'เจ้าหน้าที่ผังเมือง',
+      author: requestContext.getStore()?.actor ?? (author.trim() || 'เจ้าหน้าที่ผังเมือง'),
       content: content.trim(),
       createdAt: new Date().toISOString(),
+      active: true, step: plan.currentStep, subStep: plan.subStep, thirdStep: plan.thirdStep ?? 0,
+      ...Object.fromEntries(Object.entries(metadata).filter(([, value]) => value !== undefined)),
     };
     this.notes.unshift(note);
     this.addLog('เจ้าหน้าที่ผังเมือง', 'NOTE', plan.code, `เพิ่มหมายเหตุใน "${plan.name}"`);
@@ -443,16 +542,69 @@ class MockDatabase {
     return [...this.logs].slice(0, 50);
   }
 
+  listModules(kind: string): ModuleRecord[] { return this.store.listModules(kind); }
+  putModule(kind: string, data: ModuleRecord['data'], id?: number): ModuleRecord { return this.store.putModule(kind, data, id); }
+  deleteModule(kind: string, id: number): boolean { return this.store.deleteModule(kind, id); }
+  recordActivity(action: ActivityLog['action'], target: string, detail: string): void { this.addLog('เจ้าหน้าที่ผังเมือง', action, target, detail); }
+
+  updateNote(id: number, patch: Partial<Omit<PlanNote, 'id' | 'planId' | 'createdAt'>>): PlanNote | null {
+    const note = this.notes.find(item => item.id === id);
+    if (!note) return null;
+    Object.assign(note, patch, { updatedAt: new Date().toISOString() });
+    note.content = note.content.trim(); note.author = note.author.trim();
+    this.addLog('เจ้าหน้าที่ผังเมือง', 'NOTE', this.getPlanById(note.planId)!.plan.code, 'แก้ไขหมายเหตุ');
+    return note;
+  }
+  deleteNote(id: number): boolean {
+    const note = this.notes.find(item => item.id === id);
+    if (!note) return false;
+    note.active = false;
+    note.updatedAt = new Date().toISOString();
+    this.addLog('เจ้าหน้าที่ผังเมือง', 'NOTE', this.getPlanById(note.planId)!.plan.code, 'ลบหมายเหตุ');
+    return true;
+  }
+
+  getHistory(planId: number): PlanHistory[] { return this.history.filter(item => item.planId === planId); }
+  getAllHistory(): PlanHistory[] { return [...this.history]; }
+  getAllLogs(): ActivityLog[] { return [...this.logs]; }
+
+  listAttachments(planId: number): PlanAttachment[] { return this.store.listAttachments(planId); }
+  getAttachment(planId: number, id: string) { return this.store.getAttachment(planId, id); }
+
+  addAttachment(planId: number, name: string, mimeType: PlanAttachment['mimeType'], content: Buffer): PlanAttachment {
+    const plan = this.getPlanById(planId)?.plan;
+    if (!plan) throw new Error('ไม่พบข้อมูลผังเมือง');
+    return this.transaction(() => {
+      const file: PlanAttachment = { id: randomUUID(), planId, name, mimeType, size: content.length, createdAt: new Date().toISOString() };
+      this.store.addAttachment(file, content);
+      this.addLog('เจ้าหน้าที่ผังเมือง', 'ATTACHMENT', plan.code, `แนบไฟล์ ${name}`);
+      return file;
+    });
+  }
+
+  deleteAttachment(planId: number, id: string): boolean {
+    return this.transaction(() => {
+      const file = this.store.getAttachment(planId, id);
+      if (!file) return false;
+      this.store.deleteAttachment(planId, id);
+      this.addLog('เจ้าหน้าที่ผังเมือง', 'ATTACHMENT', this.getPlanById(planId)!.plan.code, `ลบไฟล์ ${file.name}`);
+      return true;
+    });
+  }
+
+  recordImport(count: number): void { this.addLog('เจ้าหน้าที่ผังเมือง', 'IMPORT', 'ข้อมูลผังเมือง', `นำเข้าผังเมือง ${count} รายการ`); }
+
   private addLog(actor: string, action: ActivityLog['action'], target: string, detail: string): void {
     this.logs.unshift({
       id: this.nextLogId++,
-      actor,
+      actor: requestContext.getStore()?.actor ?? actor,
       action,
       target,
       detail,
       createdAt: new Date().toISOString(),
     });
+    this.persist();
   }
 }
 
-export const mockDb = new MockDatabase();
+export const database = new UrbanPlanDatabase();

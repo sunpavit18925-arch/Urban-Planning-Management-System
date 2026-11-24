@@ -11,13 +11,18 @@ import { createGeographyReference, createTreeReference } from './geography-refer
 
 // Own server, database, and browser profile: the user's running app is untouched.
 const root = fileURLToPath(new URL('../', import.meta.url));
+process.env.UPMS_DB_PATH = ':memory:';
+process.env.UPMS_ADMIN_PASSWORD = '';
 const require = createRequire(new URL('../server/package.json', import.meta.url));
 const express = require('express');
 const app = express();
 app.use(express.json());
+const auth = new (require('./dist/services/auth.js').AuthService)(require('./dist/data/database.js').database);
+app.use('/api', auth.router);
+app.use('/api', auth.middleware);
 app.use('/api', require('./dist/routes/api.js').default);
-const reference = createGeographyReference(root, require('./dist/data/mockDb.js').mockDb.listPlans({}));
-const treeReference = createTreeReference(root, require('./dist/data/mockDb.js').mockDb.listPlans({}));
+const reference = createGeographyReference(root, require('./dist/data/database.js').database.listPlans({}));
+const treeReference = createTreeReference(root, require('./dist/data/database.js').database.listPlans({}));
 if (reference) {
   app.get('/__reference/geography', (_req, res) => res.type('html').send(reference));
   app.get('/__reference/jquery.js', (_req, res) => res.sendFile(path.resolve(root, '../DPT_UPMS2/bower_components/jquery/dist/jquery.min.js')));
@@ -194,7 +199,7 @@ try {
     await until(`document.querySelector('.php-tree-report .vmainbox')`);
   }
   const tabs = await evaluate(`Array.from(document.querySelectorAll('a[data-nav-tab]')).map(a => a.hash.slice(1))`);
-  assert.equal(tabs.length, 30);
+  assert.equal(tabs.length, 48);
   for (const tab of tabs) {
     if (['regions', 'keths'].includes(tab)) {
       await click(`a[data-nav-tab][href="#${tab}"]`);
@@ -369,7 +374,7 @@ try {
   await click('.data-table tbody .link-btn');
   await until(`document.querySelector('.modal-card .detail-meta-grid')`);
   await fill('.modal-card input[placeholder]', 'บันทึกติดตามจากหน้าจอ');
-  await evaluate(`document.querySelector('.modal-card form').requestSubmit()`);
+  await evaluate(`document.querySelector('form[aria-label="เพิ่มหมายเหตุ"]').requestSubmit()`);
   await until(`document.querySelector('.notes-list').innerText.includes('บันทึกติดตามจากหน้าจอ')`);
   await click('.modal-header .btn-icon');
   await navigate('notes');
@@ -396,6 +401,106 @@ try {
   const csv = await evaluate('window.__csvText');
   assert.ok(csv.includes('เชียงใหม่') && !csv.includes('ภูเก็ต'));
   assert.equal(csv.split('\r\n').length, 18, 'export honors region filter');
+  await navigate('import');
+  await mkdir(path.join(root, '.tmp'), { recursive: true });
+  const invalidImport = path.join(root, '.tmp/import-invalid.csv');
+  const validImport = path.join(root, '.tmp/import-valid.csv');
+  const attachmentFile = path.join(root, '.tmp/แผนที่.pdf');
+  await writeFile(invalidImport, 'name,provinceId\nจังหวัดผิด,999');
+  await writeFile(validImport, 'name,provinceId,budgetYear\nผังเมืองนำเข้าจากหน้าจอ,24,2569');
+  await writeFile(attachmentFile, '%PDF-1.4\n1 0 obj << /Type /Catalog >> endobj\n%%EOF');
+  async function selectFile(selector, filename) {
+    const document = await send('DOM.getDocument');
+    const { nodeId } = await send('DOM.querySelector', { nodeId: document.root.nodeId, selector });
+    await send('DOM.setFileInputFiles', { nodeId, files: [filename] });
+  }
+  await selectFile('input[aria-label="ไฟล์นำเข้าผังเมือง"]', invalidImport);
+  await evaluate(`document.querySelector('.data-transfer form').requestSubmit()`);
+  await until(`document.querySelector('section[aria-label="ผลตรวจไฟล์นำเข้า"] .alert-error')`);
+  assert.equal(await evaluate(`document.querySelector('section[aria-label="ผลตรวจไฟล์นำเข้า"] > button').disabled`), true);
+  await selectFile('input[aria-label="ไฟล์นำเข้าผังเมือง"]', validImport);
+  await evaluate(`document.querySelector('.data-transfer form').requestSubmit()`);
+  await until(`document.querySelector('section[aria-label="ผลตรวจไฟล์นำเข้า"] > button') && !document.querySelector('section[aria-label="ผลตรวจไฟล์นำเข้า"] > button').disabled`);
+  await writeFile(path.join(root, '.tmp/import-preview-desktop.png'), Buffer.from((await send('Page.captureScreenshot', { format: 'png' })).data, 'base64'));
+  await click('section[aria-label="ผลตรวจไฟล์นำเข้า"] > button');
+  await until(`document.querySelector('.data-transfer [role="status"]')?.innerText.includes('1 รายการ')`);
+  await navigate('plans');
+  await fill('.filter-bar input', 'ผังเมืองนำเข้าจากหน้าจอ');
+  await until(`document.querySelectorAll('.data-table tbody tr').length === 1 && document.querySelector('.data-table tbody').innerText.includes('ผังเมืองนำเข้าจากหน้าจอ')`);
+  await click('.data-table tbody .link-btn');
+  await until(`document.querySelector('input[aria-label="เลือกไฟล์แนบ"]:not(:disabled)')`);
+  await selectFile('input[aria-label="เลือกไฟล์แนบ"]', attachmentFile);
+  await evaluate(`document.querySelector('section[aria-label="ไฟล์แนบผังเมือง"] form').requestSubmit()`);
+  await until(`document.querySelector('.attachment-list')?.innerText.includes('แผนที่.pdf')`);
+  await evaluate(`(() => { const select = document.querySelector('.modal-card .inline-controls select'); select.value = '3'; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+  await click('.modal-card .inline-controls .btn-primary');
+  await until(`document.querySelector('section[aria-label="ประวัติการแก้ไขผังเมือง"] details')`);
+  await writeFile(path.join(root, '.tmp/plan-history-files-desktop.png'), Buffer.from((await send('Page.captureScreenshot', { format: 'png' })).data, 'base64'));
+  await click('.attachment-list button');
+  await until(`!document.querySelector('.attachment-list')`);
+  await click('.modal-header .btn-icon');
+  await evaluate(`document.querySelector('.data-table tbody .btn-danger').click()`);
+  await until(`document.querySelector('.empty-cell')`);
+  async function choose(selector, text) {
+    await evaluate(`(() => { const select = document.querySelector(${JSON.stringify(selector)}); const option = Array.from(select.options).find(option => option.textContent.includes(${JSON.stringify(text)})); if (!option) throw new Error('Option missing'); select.value = option.value; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+  }
+  async function addModule(kind, title, fields = {}, references = {}) {
+    await navigate(`module-${kind}`); await click('.panel-header .btn-primary');
+    await fill('.modal-card input[name="name"]', title);
+    for (const [key, value] of Object.entries(fields)) await fill(`.modal-card [name="${key}"]`, String(value));
+    for (const [key, value] of Object.entries(references)) await choose(`.modal-card [name="${key}"]`, value);
+    await evaluate(`document.querySelector('.module-page .modal-card form').requestSubmit()`);
+    await until(`!document.querySelector('.modal-card') && document.querySelector('.module-page .data-table').innerText.includes(${JSON.stringify(title)})`, `${kind} created`);
+  }
+  await addModule('companies', 'บริษัทจากหน้าจอ', { phone: '02 123 4567' });
+  await addModule('projects', 'โครงการจากหน้าจอ', { budget: 100000, price: 90000 }, { companyId: 'บริษัทจากหน้าจอ' });
+  await addModule('equipment', 'อุปกรณ์จากหน้าจอ', { price: 50000, maintenanceAmount: 5000, warrantyYears: 1, replacementYear: 2573 }, { projectId: 'โครงการจากหน้าจอ' });
+  await addModule('maintenancePlans', 'แผนบำรุงรักษาจากหน้าจอ', { startYear: 2569, years: 5 }, { equipmentIds: 'อุปกรณ์จากหน้าจอ' });
+  await evaluate(`Array.from(document.querySelectorAll('.module-page button')).find(button => button.textContent === 'ตารางรายปี').click()`);
+  await until(`document.querySelector('.maintenance-replacement') && document.querySelector('.maintenance-warranty')`);
+  await writeFile(path.join(root, '.tmp/maintenance-desktop.png'), Buffer.from((await send('Page.captureScreenshot', { format: 'png' })).data, 'base64'));
+  await addModule('workflowCases', 'งานแก้ไขจากหน้าจอ', {}, { planId: 'เมืองเชียงใหม่' });
+  const definitions = await (await fetch(base + '/api/modules/workflowSteps')).json();
+  const workflowDefinition = definitions.find(item => item.data.profile === 'm35' && item.data.step === 2 && item.data.subStep === 1 && item.data.thirdStep === 0);
+  await navigate('module-progressEntries'); await click('.panel-header .btn-primary');
+  await fill('.modal-card [name="name"]', 'ความก้าวหน้าจากหน้าจอ');
+  await choose('.modal-card [name="planId"]', 'เมืองเชียงใหม่'); await choose('.modal-card [name="caseId"]', 'งานแก้ไขจากหน้าจอ');
+  await evaluate(`(() => { const select = document.querySelector('.modal-card [name="definitionId"]'); select.value = '${workflowDefinition.id}'; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+  await fill('.modal-card [name="start"]', '2026-01-01'); await fill('.modal-card [name="stop"]', '2026-01-28');
+  await click('.modal-card [name="makeCurrent"]');
+  await evaluate(`document.querySelector('.module-page .modal-card form').requestSubmit()`);
+  await until(`!document.querySelector('.modal-card') && document.querySelector('.module-page').innerText.includes('ความก้าวหน้าจากหน้าจอ')`);
+  assert.equal((await (await fetch(base + '/api/plans/1')).json()).plan.currentStep, 2);
+  await addModule('planSchedules', 'แผนดำเนินงานจากหน้าจอ', { start: '2026-01-01' }, { planId: 'เมืองเชียงใหม่' });
+  await evaluate(`Array.from(document.querySelectorAll('.module-page button')).find(button => button.textContent === 'ดูแผน').click()`);
+  await until(`document.querySelector('.section-box .data-table tbody tr')`);
+  await navigate('catalog'); await click('.report-catalog details summary');
+  await fill('input[aria-label="ชื่อชุดข้อมูล"]', 'ชุดข้อมูลจากหน้าจอ');
+  await evaluate(`document.querySelector('.report-catalog form').requestSubmit()`);
+  await until(`document.querySelector('select[aria-label="ชุดข้อมูลสถานภาพ"]').value !== '' && !document.querySelector('.report-catalog .loading-box')`);
+  await click('.report-catalog .data-table tbody .link-btn');
+  await until(`document.querySelector('.report-catalog section .data-table tbody tr')`);
+  await navigate('map'); await until(`document.querySelectorAll('.interactive-map path[role="button"]').length === 77`);
+  const bangkokPoint = await evaluate(`(() => { const svg = document.querySelector('.interactive-map svg'); const point = new DOMPoint(100.5, 10.25).matrixTransform(svg.getScreenCTM()); return { x: point.x, y: point.y }; })()`);
+  await send('Input.dispatchMouseEvent', { type: 'mouseMoved', ...bangkokPoint });
+  await send('Input.dispatchMouseEvent', { type: 'mousePressed', button: 'left', clickCount: 1, ...bangkokPoint });
+  await send('Input.dispatchMouseEvent', { type: 'mouseReleased', button: 'left', clickCount: 1, ...bangkokPoint });
+  await until(`document.querySelector('section[aria-label="รายการผังในจังหวัด"]').innerText.includes('กรุงเทพมหานคร')`, 'province selected with the mouse');
+  const viewBox = await evaluate(`document.querySelector('.interactive-map svg').getAttribute('viewBox')`);
+  await click('button[aria-label="ขยายแผนที่"]');
+  await until(`document.querySelector('.interactive-map svg').getAttribute('viewBox') !== ${JSON.stringify(viewBox)}`);
+  await evaluate(`document.querySelector('.interactive-map path[aria-label^="เชียงใหม่ "]').dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))`);
+  await until(`document.querySelector('section[aria-label="รายการผังในจังหวัด"]').innerText.includes('เมืองเชียงใหม่')`);
+  await writeFile(path.join(root, '.tmp/interactive-map-desktop.png'), Buffer.from((await send('Page.captureScreenshot', { format: 'png' })).data, 'base64'));
+  await navigate('system'); await until(`document.querySelector('.report-summary strong')`);
+  await navigate('history'); await until(`document.querySelector('.note-item summary')`);
+  await navigate('accounts'); await click('.panel-header .btn-primary');
+  await fill('.modal-card input[pattern]', 'portfolio.owner');
+  await fill('.modal-card input[maxlength="250"]', 'ผู้ดูแลทดสอบ');
+  await fill('.modal-card input[type="password"]', 'portfolio-test-password');
+  await evaluate(`document.querySelector('.modal-card form').requestSubmit()`);
+  await until(`!document.querySelector('.modal-card') && document.querySelector('.data-table').innerText.includes('portfolio.owner')`);
+  await send('Page.reload'); await until(`document.querySelector('.auth-menu-button')?.innerText.includes('ผู้ดูแลทดสอบ') && document.querySelector('.data-table')?.innerText.includes('portfolio.owner')`);
   const committeeWasHidden = await evaluate(`document.querySelector('[data-menu-group=committee] > .menu-section-items').hidden`);
   await click('[data-menu-group=committee] > .menu-section-toggle');
   assert.equal(await evaluate(`document.querySelector('[data-menu-group=committee] > .menu-section-items').hidden`), !committeeWasHidden);
@@ -422,7 +527,11 @@ try {
   assert.equal(await evaluate(`document.documentElement.scrollWidth <= window.innerWidth`), true, 'mobile page overflow');
   assert.deepEqual(exceptions, [], 'browser exceptions');
   assert.deepEqual(failedRequests, [], 'failed local HTTP requests');
-  console.log('PASS: all 30 menus, DPT_UPMS2 geography counts/legend/drill-down/back/report, directory CRUD, plan creation/deletion/search, notes, step edits, filtered CSV export and desktop/mobile layouts.');
+  await navigate('import');
+  await until(`!document.querySelector('.php-shell').classList.contains('sidebar-open') && document.querySelector('.main-sidebar').getBoundingClientRect().right <= 0`, 'mobile menu closed after navigation');
+  assert.equal(await evaluate(`document.documentElement.scrollWidth <= window.innerWidth`), true, 'import mobile overflow');
+  await writeFile(path.join(root, '.tmp/import-mobile.png'), Buffer.from((await send('Page.captureScreenshot', { format: 'png' })).data, 'base64'));
+  console.log('PASS: all 48 menus, geography/reports, CRUD, spreadsheets, attachments, nested workflows, procurement/maintenance, snapshots, interactive map, account setup and desktop/mobile layouts.');
 } catch (error) {
   if (socket?.readyState === WebSocket.OPEN && sessionId) {
     console.error(await evaluate(`JSON.stringify({ url: location.href, text: document.body?.innerText.slice(0, 1400) })`).catch(() => 'Page unavailable'));

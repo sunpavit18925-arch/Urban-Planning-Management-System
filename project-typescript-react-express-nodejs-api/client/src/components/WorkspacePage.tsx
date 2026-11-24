@@ -27,6 +27,13 @@ export function WorkspacePage({ tab, plans, regions, steps, onOpenPlan }: {
   const [notes, setNotes] = useState<Note[]>([]);
   const [error, setError] = useState('');
   const [notesLoading, setNotesLoading] = useState(false);
+  const [committeeZones, setCommitteeZones] = useState<number[]>([]);
+  useEffect(() => {
+    if (!tab.startsWith('committee')) return;
+    let active = true;
+    api.getCommittee(Number(tab.replace('committee', ''))).then(result => { if (active) setCommitteeZones(result.assignments.map(item => Number(item.data.kethId))); }).catch(error => { if (active) setError(error.message); });
+    return () => { active = false; };
+  }, [tab]);
   useEffect(() => {
     if (tab !== 'notes') return;
     let active = true;
@@ -36,7 +43,7 @@ export function WorkspacePage({ tab, plans, regions, steps, onOpenPlan }: {
     return () => { active = false; };
   }, [tab, plans]);
   const committee = tab.startsWith('committee') ? Number(tab.replace('committee', '')) : 0;
-  const zones = Array.from({ length: 18 }, (_, i) => i + 1).filter(id => (id - 1) % 7 + 1 === committee);
+  const zones = committeeZones;
   const items = plans.filter(plan => {
     if (region && plan.regionId !== Number(region)) return false;
     if (health && plan.health !== health) return false;
@@ -82,6 +89,7 @@ export function WorkspacePage({ tab, plans, regions, steps, onOpenPlan }: {
     </div>
     {error && <div className="alert-error" role="alert">{error}</div>}
     {tab === 'export' && <p className="export-description">ดาวน์โหลดข้อมูลตามตัวกรองเป็นไฟล์ CSV สำหรับเปิดใน Excel รองรับข้อความภาษาไทย</p>}
+    {tab === 'export' && <p><a className="btn-secondary" href="/api/exports/plans.xlsx" download>ดาวน์โหลดข้อมูลทั้งหมดเป็น Excel (.xlsx)</a></p>}
     {['status', 'progress'].includes(tab) && <div className="report-summary">
       <div><strong>{items.length}</strong><span>ผังเมืองทั้งหมด</span></div><div><strong>{items.filter(p => p.health === 'on_track').length}</strong><span>มีความก้าวหน้า</span></div>
       <div><strong>{items.filter(p => p.delayDays > 0).length}</strong><span>ต้องติดตามเร่งรัด</span></div><div><strong>{items.filter(p => p.effectiveStatus === 'มีผลบังคับใช้').length}</strong><span>มีผลบังคับใช้</span></div>

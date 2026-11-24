@@ -1,0 +1,39 @@
+name: TypeScript application
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'project-typescript-react-express-nodejs-api/**'
+      - '.github/workflows/typescript.yml'
+  pull_request:
+    paths:
+      - 'project-typescript-react-express-nodejs-api/**'
+      - '.github/workflows/typescript.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: project-typescript-react-express-nodejs-api
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: |
+            project-typescript-react-express-nodejs-api/server/package-lock.json
+            project-typescript-react-express-nodejs-api/client/package-lock.json
+      - run: npm --prefix server ci
+      - run: npm --prefix client ci
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm test

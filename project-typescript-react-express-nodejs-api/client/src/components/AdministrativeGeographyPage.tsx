@@ -39,6 +39,7 @@ export function AdministrativeGeographyPage({ onBack, inspectorates = false }: {
   const [route, setRoute] = useState<GeographyRoute>(getGeographyRoute);
   const [plans, setPlans] = useState<UrbanPlan[] | null>(null);
   const [steps, setSteps] = useState<StepDefinition[]>([]);
+  const [currentProvinces, setCurrentProvinces] = useState(PHP_REGIONS.flatMap(group => group.provinces));
   const [error, setError] = useState('');
   const [selectedPlanId, setSelectedPlanId] = useState<number | null>(null);
   const [search, setSearch] = useState('');
@@ -46,12 +47,12 @@ export function AdministrativeGeographyPage({ onBack, inspectorates = false }: {
   const [retry, setRetry] = useState(0);
   const refresh = useCallback(async () => {
     const [result, meta] = await Promise.all([api.getPlans(), api.getMeta()]);
-    setPlans(result.items); setSteps(meta.steps); setError('');
+    setPlans(result.items); setSteps(meta.steps); setCurrentProvinces(meta.provinces); setError('');
   }, []);
   useEffect(() => {
     let active = true;
     Promise.all([api.getPlans(), api.getMeta()]).then(([result, meta]) => {
-      if (active) { setPlans(result.items); setSteps(meta.steps); setError(''); }
+      if (active) { setPlans(result.items); setSteps(meta.steps); setCurrentProvinces(meta.provinces); setError(''); }
     }).catch(err => { if (active) setError(err instanceof Error ? err.message : 'โหลดข้อมูลไม่สำเร็จ'); });
     return () => { active = false; };
   }, [retry]);
@@ -72,10 +73,10 @@ export function AdministrativeGeographyPage({ onBack, inspectorates = false }: {
     else if (route.regionId || route.kethId) go({ report: false });
     else onBack();
   };
-  const availableGroups = inspectorates ? PHP_KETHS.map(keth => ({ ...keth, id: keth.kethId, regionId: keth.provinces[0].regionId })) : PHP_REGIONS.map(region => ({ ...region, regionId: region.id }));
+  const availableGroups = inspectorates ? PHP_KETHS.map(keth => ({ ...keth, provinces: currentProvinces.filter(province => province.kethId === keth.kethId), id: keth.kethId, regionId: keth.provinces[0].regionId })) : PHP_REGIONS.map(region => ({ ...region, provinces: currentProvinces.filter(province => province.regionId === region.id), regionId: region.id }));
   const region = availableGroups.find(group => group.id === (inspectorates ? route.kethId : route.regionId));
   const groupRoute = (id: number, report: boolean, status?: number, provinceId?: number): GeographyRoute => ({ ...(inspectorates ? { kethId: id } : { regionId: id }), report, status, provinceId });
-  const allProvinces = PHP_REGIONS.flatMap(group => group.provinces);
+  const allProvinces = currentProvinces;
   const province = allProvinces.find(province => province.id === route.provinceId);
   const scopePlans = plans?.filter(p => (!region || (inspectorates ? p.kethId : p.regionId) === region.id) && (!province || p.provinceId === province.id)) ?? null;
   const reportPlans = scopePlans?.filter(p => (!route.status || matchesGeographyStatus(p, route.status)) &&

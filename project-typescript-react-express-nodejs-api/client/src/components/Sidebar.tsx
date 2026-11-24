@@ -3,10 +3,11 @@ import { menuItems, NavTab } from '../data/navigation';
 
 export function Sidebar({ tab, navigate }: { tab: NavTab; navigate: (tab: NavTab) => void }) {
   const [expanded, setExpanded] = useState<string[]>(['manage']);
-  const manageTabs = ['plans', 'm35', 'evaluation', 'evaluationSteps', 'offices', 'notes', 'noteCategories', 'administrators', 'reasons'];
-  const reportTabs = ['progress', 'operating', 'legislation', 'schedule', 'logs'];
+  const manageTabs = ['plans', 'import', 'm35', 'evaluation', 'evaluationSteps', 'offices', 'notes', 'noteCategories', 'administrators', 'reasons'];
+  const reportTabs = ['progress', 'operating', 'legislation', 'schedule', 'logs', 'catalog', 'map', 'accounts', 'system', 'history'];
+  const moduleTabs = menuItems.filter(item => item.id.startsWith('module-')).map(item => item.id);
   useEffect(() => {
-    const group = tab.startsWith('committee') ? 'committee' : manageTabs.includes(tab) ? 'manage' : reportTabs.includes(tab) ? 'reports' : tab === 'contacts' ? 'contacts' : undefined;
+    const group = tab.startsWith('module-') ? 'modules' : tab.startsWith('committee') ? 'committee' : manageTabs.includes(tab) ? 'manage' : reportTabs.includes(tab) ? 'reports' : tab === 'contacts' ? 'contacts' : undefined;
     if (group) setExpanded(current => current.includes(group) ? current : [...current, group]);
   }, [tab]);
   const leaf = (id: string, nested = false) => {
@@ -40,6 +41,7 @@ export function Sidebar({ tab, navigate }: { tab: NavTab; navigate: (tab: NavTab
         {group('manage', 'จัดการข้อมูลผังเมืองรวม', 'pencil-square-o', manageTabs)}
         <li className="dpt-menu-divider" role="separator" />
         {group('reports', 'รายงานและเครื่องมือ', 'bar-chart', reportTabs)}
+        {group('modules', 'งานขั้นตอนและระบบอุปกรณ์', 'cubes', moduleTabs)}
       </ul>
     </nav>
   </aside>;

@@ -9,6 +9,7 @@ export const navigation = [
   ] },
   { title: 'จัดการข้อมูลผังเมืองรวม', items: [
     { id: 'plans', label: 'ผังเมืองรวมเมือง/ชุมชน', icon: 'building' },
+    { id: 'import', label: 'นำเข้าข้อมูล Excel / CSV', icon: 'upload' },
     { id: 'm35', label: 'ผังเมืองในขั้นตอน ม.35', icon: 'legal' },
     { id: 'evaluation', label: 'ผังเมืองในขั้นตอนการประเมิน', icon: 'check-square-o' },
     { id: 'steps', label: 'ขั้นตอนดำเนินการ', icon: 'list-ol' },
@@ -30,8 +31,20 @@ export const navigation = [
   )) },
   { title: 'ระบบและประสานงาน', items: [
     { id: 'administrators', label: 'ผู้ดูแลระบบ', icon: 'users' },
+    { id: 'accounts', label: 'บัญชีและสิทธิ์ใช้งาน', icon: 'lock' },
+    { id: 'system', label: 'สรุปการใช้งานระบบ', icon: 'tachometer' },
+    { id: 'history', label: 'ประวัติการเปลี่ยนแปลงทุกผัง', icon: 'history' },
     { id: 'logs', label: 'บันทึกกิจกรรม', icon: 'book' },
     { id: 'contacts', label: 'ติดต่อประสานงาน', icon: 'phone' },
+  ] },
+  { title: 'งานเพิ่มเติมจาก PHP', items: [
+    { id: 'catalog', label: 'รายงานแยกประเภทและชุดข้อมูล', icon: 'table' },
+    { id: 'map', label: 'แผนที่ผังเมืองแบบโต้ตอบ', icon: 'globe' },
+    ...[
+      ['workflowSteps', 'ขั้นตอนย่อยและเกณฑ์เวลา'], ['workflowCases', 'งาน ม.35 และงานประเมิน'], ['progressEntries', 'บันทึกขั้นตอนและวันที่'], ['planSchedules', 'จัดทำแผนดำเนินงาน'],
+      ['committees', 'มอบหมายคณะติดตาม'], ['provinceAssignments', 'จังหวัดและเขตที่รับผิดชอบ'], ['companies', 'บริษัทและผู้รับจ้าง'], ['projects', 'โครงการจัดหาและบำรุงรักษา'],
+      ['equipment', 'ระบบและอุปกรณ์'], ['inspections', 'รายงานเข้าตรวจอุปกรณ์'], ['maintenancePlans', 'แผนบำรุงรักษาหลายปี'], ['userDirectory', 'ทะเบียนผู้ใช้งาน'],
+    ].map(([key, label]) => ({ id: `module-${key}`, label, icon: 'list-alt' })),
   ] },
 ];
 
