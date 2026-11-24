@@ -67,3 +67,8 @@ Thumbs.db
 /php/sun.php
 /php/tree_chart2/index.php
 /php/tree_chart2/new 1.php
+
+# Unused prototype assets and duplicate map data; preserve local copies.
+# Provenance: php/docs/unused-assets.json
+/php/tree_chart2/
+/php/js/province.js

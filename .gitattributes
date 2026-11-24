@@ -2,7 +2,6 @@
 *.php linguist-language=PHP
 
 # Keep geographic datasets out of source-language percentages.
-php/js/province.js -linguist-detectable
 php/js/provinces.js -linguist-detectable
 
 # Byte-identical to cityplan_m35X_detail_pro.php; count this shared code once.
@@ -19,8 +18,10 @@ php/js/bootstrap.js linguist-vendored
 php/js/export.js linguist-vendored
 php/js/jquery* linguist-vendored
 php/js/jspdf.umd.min.js linguist-vendored
+php/tree_chart/css/bootstrap*.css linguist-vendored
+php/tree_chart/css/fontawesome*.css linguist-vendored
+php/tree_chart/js/bootstrap*.js linguist-vendored
 php/tree_chart/js/owl.carousel* linguist-vendored
-php/tree_chart2/js/owl.carousel* linguist-vendored
 project-typescript-react-express-nodejs-api/client/public/php/** linguist-vendored
 
 # Minified bundles and source maps are generated assets, not authored sources.
