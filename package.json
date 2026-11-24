@@ -1,0 +1,19 @@
+{
+  "name": "same-project-typescript-react-express-nodejs-api",
+  "version": "1.0.0",
+  "description": "Urban Planning Monitoring System (UPMS) - React, TypeScript and Express with seeded in-memory data",
+  "private": true,
+  "scripts": {
+    "sync:php": "node scripts/sync-php-reference.mjs",
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "dev": "concurrently -n API,WEB -c cyan,green \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "start": "npm --prefix server start",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "typecheck": "npm --prefix server run typecheck && npm --prefix client run typecheck",
+    "test:api": "npm --prefix server run build && node scripts/check-api.mjs",
+    "test:ui": "npm run build && node scripts/check-ui.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

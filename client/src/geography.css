@@ -1,0 +1,69 @@
+/* DPT_UPMS2/app/show_extra.php and show_page_park-keth.php, scoped to this page. */
+.dpt-geography #btn_backy { margin-top: 6px; }
+.dpt-geography #extra-content-area { display: flow-root; }
+.dpt-geography .dpt-link { display: inline; border: 0; padding: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; text-align: inherit; }
+.dpt-geography .park-name, .dpt-geography .park-value, .dpt-geography .dpt-province-card .province-link { font-weight: 700; }
+.dpt-geography .province-link { font-weight: 600; }
+.dpt-geography .dpt-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.dpt-geography .dpt-link:focus-visible, .dpt-geography .dpt-status-count:focus-visible { outline: 2px solid #195e91; outline-offset: 2px; }
+.dpt-geography .extra-sideshow-inner > h4.div-h { font-weight: 600; }
+.dpt-geography .dpt-province-count { color: #000; }
+.dpt-geography .dpt-province-card { border-color: #000; }
+.dpt-geography .dpt-region-map { background: #fff; padding: 10px; }
+.dpt-geography .dpt-status-legend { margin: 8px 0; border: 2px solid #000; background: #fff; }
+.dpt-geography .dpt-legend-title { width: 100%; border-bottom: 2px solid #000; padding: 8px; margin-bottom: 8px; background: #dfdfdf; }
+.dpt-geography #table_detail_status { width: 100%; background: transparent; padding: 2px; }
+.dpt-geography #table_detail_status > tbody { display: flex; flex-direction: column; }
+.dpt-geography #table_detail_status > tbody > tr { background: transparent; margin: 5px; }
+.dpt-geography #table_detail_status > tbody > tr > td { padding: 0; }
+.dpt-geography #table_detail_status > tbody > tr > td:first-child { min-width: 20px; text-align: center; background: #fff; }
+.dpt-geography #table_detail_status > tbody > tr > td:last-child { padding-left: 5px; min-width: 170px; max-width: 170px; background: #fff; }
+.dpt-geography .tds-color { min-width: 50px; text-align: center; }
+.dpt-geography .dpt-status-7 > i { color: red; }
+.dpt-geography .dpt-status-legend .dpt-status-8 { background: linear-gradient(90deg,#0000ff 0%,#0000ff 15%,#fff 15%,#fff 100%) !important; }
+.dpt-geography .dpt-status-bar { display: flex; flex-direction: row; justify-content: center; width: 100%; }
+.dpt-geography .dpt-status-count { text-align: center; padding: 3px; height: 30px; width: 10%; min-width: 0; border: 2px solid; margin: 2px; font: inherit; color: #111; border-radius: 0; position: relative; }
+.dpt-geography .dpt-status-count.dpt-status-7 { margin-left: 10px; }
+.dpt-geography .dpt-status-count.dpt-status-7 > i { float: left; margin: 3px 0; font-size: inherit; }
+.dpt-geography .dpt-status-count:not(:disabled):hover { box-shadow: 0 0 0 1px #333; }
+.dpt-geography .dpt-status-count:disabled { cursor: default; opacity: 1; }
+.dpt-geography .dpt-geography-error { margin-top: 12px; }
+.dpt-geography .dpt-loading { margin-top: 10px; }
+.dpt-geography #status_table { margin-top: 20px; }
+.dpt-geography .dpt-summary-table { margin-bottom: 8px; }
+.dpt-geography .dpt-summary-table th:not(:first-child), .dpt-geography .dpt-summary-table td { text-align: center; }
+.dpt-geography .dpt-summary-table td .dpt-link { display: block; width: 100%; font-weight: 600; }
+.dpt-geography .dpt-summary-table td .dpt-link:hover { background: #def8ff; }
+.dpt-geography .dpt-search-note { margin: 8px 0 0; font-size: 14px; }
+.dpt-geography .dpt-pending-note { margin: 16px -15px 0; font-size: 14px; }
+.dpt-geography .dpt-pending-note > i { color: red; margin-right: 6px; }
+.dpt-geography .search-row { font-weight: 400; }
+.dpt-geography .search-row > span { font-weight: 600; padding-right: 5px; width: 170px; text-align: right; }
+.dpt-geography .search-row > select, .dpt-geography .search-row > input { min-width: 0; background: #fff; }
+.dpt-geography .dpt-report-caption { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; margin: 16px -15px 8px; font-size: 16px; }
+.dpt-geography #cityplanshow { margin: 0 -15px; }
+.dpt-geography .dpt-plan-report { background: #fff; min-width: 1050px; }
+.dpt-geography .dpt-plan-report th { text-align: center; background: #295dbd; color: #fff; vertical-align: middle; }
+.dpt-geography .dpt-plan-report td { vertical-align: middle; }
+.dpt-geography .dpt-plan-report .text_cp_name { min-width: 180px; }
+@media (max-width: 767px) {
+  .dpt-geography .search-row > span { width: 65px; }
+  .dpt-geography .search-row > input, .dpt-geography .search-row > select { width: calc(100% - 65px); }
+}
+@media print {
+  .dpt-geography #title_page { margin-top: -10pt; }
+  .dpt-geography #info_bar { margin-top: 0; margin-bottom: 30px; }
+  .dpt-geography #extra-content-area-r1 { width: 100%; margin-top: -50px; margin-bottom: 10px; padding: 0 15px; display: flex; align-items: flex-start; gap: 16px; }
+  .dpt-geography #extra-content-area-r1 > .map-container { border: none; width: 40%; margin-top: 25px; padding: 0; }
+  .dpt-geography #extra-content-area-r1 > .dpt-status-legend { width: 50%; }
+  .dpt-geography #extra-sideshow { width: 100%; }
+  .dpt-geography .extra-sideshow-inner > h3 { font-size: 17px; }
+  .dpt-geography .extra-sideshow-inner > h4 { font-size: 12px; margin-bottom: -5px; }
+  .dpt-geography .extra-sideshow-inner > .table-responsive { font-size: 12px; margin: 0 0 -14px; }
+  .dpt-geography .dpt-plan-report { min-width: 0; font-size: 11px; }
+  .dpt-geography .dpt-plan-report .text_cp_name { min-width: 0; }
+  .dpt-geography .dpt-plan-report td, .dpt-geography .dpt-plan-report th { padding: 3px; }
+  .dpt-geography .info-frame { break-inside: avoid; }
+  .dpt-geography button.dpt-link { display: inline !important; }
+  .dpt-geography button.dpt-status-count { display: block !important; }
+}

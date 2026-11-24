@@ -1,0 +1,7 @@
+/* Keep the PHP fragment's float/margin behavior inside its React host. */
+.php-tree-content { display: flow-root; }
+.php-tree-report [data-tree-filter]:focus-visible,
+.php-tree-report [data-tree-help]:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+@media print {
+  .php-tree-report .modal-backdrop { display: none !important; }
+}

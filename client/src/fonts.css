@@ -1,0 +1,8 @@
+/* Same Kanit Light face used by DPT_UPMS2; kept local for reliable rendering. */
+@font-face {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/kanit/Kanit-Light.ttf') format('truetype');
+}

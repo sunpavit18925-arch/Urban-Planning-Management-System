@@ -1,0 +1,47 @@
+.native-status-report { display: flow-root; }
+.native-status-report #A4 { margin-top: 5px; border-radius: 28px; }
+.native-status-report h1, .native-status-report h2, .native-status-report h3 { font-family: Kanit, sans-serif; text-align: center; }
+.native-status-report h3 { margin-top: 0; }
+.native-report-row { margin-top: 5px; }
+.native-chart-heading { min-height: 43px; }
+.native-chart-heading > span { font: 28px Kanit, sans-serif; }
+[data-chart-panel="status"] .native-chart-heading > span { font-size: 26px; }
+.native-chart-heading > button { margin-top: 3px; margin-right: 3px; }
+.native-chart-box { border-top-width: 7.5px; padding-top: 15px; display: block; }
+.native-chart-surface { position: relative; width: 100%; aspect-ratio: 2 / 1; }
+.native-chart-surface canvas { width: 100% !important; height: 100% !important; }
+.native-chart-panel { margin-bottom: 20px; }
+.native-chart-table th { text-align: center; }
+.native-report-link { border: 0; padding: 0; background: transparent; color: inherit; font: inherit; text-align: inherit; }
+.native-report-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.native-report-link:focus-visible { outline: 2px solid #23719c; outline-offset: 2px; }
+.native-current-status .current-matrix-wrap { margin-top: 15px; padding: 0; }
+.current-matrix { min-width: 650px; }
+.current-matrix th { width: 26%; text-align: center; vertical-align: middle !important; font-size: 14px; background: #295dbd; color: white; }
+.current-matrix th:first-child { width: 22%; font-size: 18px; }
+.current-matrix .current-head-expired { background: #bebebe; color: #343434; }
+.current-matrix .current-head-active { background: #3e6e0f; }
+.current-matrix .current-head-new { background: #5191e9; color: #082f50; }
+.current-matrix th span { font-size: 18px; }
+.current-matrix td { border-top: 1px solid #dfdfdf !important; vertical-align: middle !important; }
+.current-matrix .current-expired { background: #f0f0f0; text-align: center; }
+.current-matrix .current-active { background: #97b17d; text-align: center; }
+.current-matrix .current-new { background: #d3e5ff; text-align: center; }
+.current-group-heading > td:first-child, .current-mainrow > td:first-child { font-size: 17px; font-weight: 600; }
+.current-subrow td { border-top: 0 !important; }
+.current-subrow td:first-child { padding-left: 20px; }
+.current-mainrow small { font-size: 14px; font-weight: 400; }
+.current-unspecified { color: red; }
+.current-total { font-size: 15px; font-weight: 600; text-align: center; }
+.current-status-selection { margin-top: 20px; border-top: 1px solid #aaa; padding-top: 12px; }
+.current-status-selection h4 { margin-bottom: 16px; }
+.current-selection-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+@media (min-width: 992px) { .native-report-separator { border-right: 7.5px solid #aaa; } }
+@media (max-width: 767px) { .native-chart-surface { aspect-ratio: 1.35 / 1; } }
+@media print {
+  .native-status-report .native-chart-heading > button { display: none !important; }
+  .native-status-report #A4 { margin-top: 10pt; }
+  .native-status-report button.native-report-link, .native-current-status button.native-report-link { display: inline !important; }
+  .native-current-status .current-matrix { min-width: 0; }
+  .current-selection-actions { display: none; }
+}

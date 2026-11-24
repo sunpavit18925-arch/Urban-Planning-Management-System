@@ -1,0 +1,20 @@
+/* Match DPT_UPMS2's AdminLTE shell and nav1.php; retain all application routes. */
+html, body, #root { height: auto; min-height: 100%; }
+.php-shell { height: auto; min-height: 100vh; }
+.php-shell .main-sidebar { position: absolute; top: 0; bottom: auto; padding-top: 50px; min-height: 100%; overflow: visible; z-index: 810; }
+.php-shell .mainname { top: auto; height: auto; line-height: inherit; transform: translateX(-50%) translateY(50%); }
+.php-shell .dpt-sidebar-menu .menu-section-toggle { display: block; width: auto; padding: 12px 5px 12px 15px; border: 0; border-left: 3px solid transparent; background: transparent; color: #444; font: inherit; font-weight: 600; }
+.php-shell .dpt-sidebar-menu .menu-section-toggle:hover { background: #f4f4f5; color: #000; }
+.php-shell .dpt-sidebar-menu .treeview-menu { background: #f4f4f5; }
+.php-shell .dpt-sidebar-menu .treeview-menu[hidden] { display: none; }
+.php-shell .sidebar-menu.dpt-sidebar-menu > li.dpt-sidebar-role { display: flex; align-items: center; justify-content: space-between; font-size: 16px; background: #007ed3; color: #fff; }
+.php-shell .dpt-sidebar-menu .u-manual { margin: 0 -17px 0 0; padding: 0; color: #fff; font-weight: 500; background: transparent; border: 0; }
+.php-shell .dpt-menu-divider { margin: 0; border-top: 1.25px solid #d9d9d9; }
+.php-shell .dpt-sidebar-menu a:focus-visible { outline: 2px solid #195e91; outline-offset: -2px; }
+@media (min-width: 768px) {
+  .php-shell.sidebar-collapse .dpt-sidebar-role { display: none; }
+  .php-shell.sidebar-collapse .dpt-sidebar-menu .menu-section-toggle > span { display: none; }
+}
+@media (max-width: 767px) {
+  .php-shell .main-sidebar { top: 0; padding-top: 100px; z-index: 1030; }
+}
