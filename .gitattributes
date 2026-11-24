@@ -6,8 +6,21 @@ php/js/province.js -linguist-detectable
 php/js/provinces.js -linguist-detectable
 php/js/provinces.php -linguist-detectable
 
+# Archived report/maintenance variants have no callers in the PHP application.
+php/apps/demo_m1(orgin).php -linguist-detectable
+php/apps/plan_show(origin).php -linguist-detectable
+php/apps/project_load_equipment(origin).php -linguist-detectable
+php/report/cityplan-oldchart.php -linguist-detectable
+php/report/manage_cityplanX-ver2(origin).php -linguist-detectable
+php/report/pro_result-backup.php -linguist-detectable
+php/report/tree-chart-pro_cityplan-backup.php -linguist-detectable
+
+# Byte-identical to cityplan_m35X_detail_pro.php; count this shared code once.
+php/app/cityplan_est_detail_pro.php -linguist-detectable
+
 # Bundled third-party libraries, including paths Linguist may not recognize.
 php/bower_components/** linguist-vendored
+php/dist/** linguist-vendored
 php/ChartJs/** linguist-vendored
 php/export/** linguist-vendored
 php/leaflet/** linguist-vendored
@@ -18,7 +31,13 @@ php/js/jquery* linguist-vendored
 php/js/jspdf.umd.min.js linguist-vendored
 php/tree_chart/js/owl.carousel* linguist-vendored
 php/tree_chart2/js/owl.carousel* linguist-vendored
-project-typescript-react-express-nodejs-api/client/public/php/ChartJs/** linguist-vendored
+project-typescript-react-express-nodejs-api/client/public/php/** linguist-vendored
+
+# Minified bundles and source maps are generated assets, not authored sources.
+*.min.js linguist-generated
+*.min.css linguist-generated
+*.js.map linguist-generated
+*.css.map linguist-generated
 
 # Reference modules generated from PHP templates and seed data.
 project-typescript-react-express-nodejs-api/client/src/data/phpReference.ts linguist-generated
