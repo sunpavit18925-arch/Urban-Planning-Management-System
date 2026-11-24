@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Sarabun', sans-serif;
+}
+body{
+  margin: 20px 0;
+}
+.tree, .tree ul, .tree li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.tree {
+    margin: 0 0 10PX;
+    text-align: center;
+}
+.tree, .tree ul {
+    display: table;
+}
+.tree ul {
+  width: 100%;
+}
+    .tree li {
+        display: table-cell;
+        padding: 10px 0 10px;
+        vertical-align: top;
+    }
+        /* _________ */
+        .tree li:before {
+            outline: solid 1px #666;
+            content: "";
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .tree li:first-child:before {left: 50%;}
+        .tree li:last-child:before {right: 50%;}
+
+        .tree div {
+            border: solid 2px #666;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 0 .2em .4em;
+            padding: 10px 15px;
+            position: relative;
+        }
+        /* If the tree represents DOM structure */
+            /* | */
+            .tree ul:before,
+            .tree div:before {
+                outline: solid 1px #666;
+                content: "";
+                height: .5em;
+                left: 50%;
+                position: absolute;
+            }
+            .tree ul:before {
+                top: -.5em;
+            }
+            .tree div:before {
+                top: -.55em;
+            }
+
+/* The root node doesn't connect upwards */
+.tree > li {margin-top: 0;}
+    .tree > li:before,
+    .tree > li:after,
+    .tree > li > div:before {
+      outline: none;
+    }
+#number{
+  width: 120px;
+  height: auto;
+  border: solid 0.5px #666;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+.header{
+  width: auto;
+  font-size: 30px;
+  font-weight: 500 ;
+  color: #fff;
+  padding: 10px;
+  background-color:#0099e6 ;
+  outline: solid 1px #666;
+  border-radius: 20px;
+}
+.make{
+  font-size: 24px;
+  font-weight: 400 ;
+  color: #fff;
+  background-color:#0099e6 ;
+}
+.city{
+  font-size: 20px;
+  font-weight: 300 ;
+  color: #fff;
+  background-color:#0099e6 ;
+}
+.ecc{
+  font-size: 20px;
+  font-weight: 300 ;
+  color: #fff;
+  background-color:#0099e6 ;
+}
+.adjust{
+  font-size: 24px;
+  font-weight: 400 ;
+  color: #fff;
+  background-color:#408000 ;
+}
+.effective{
+  font-size: 20px;
+  font-weight: 300 ;
+  color: #fff;
+  background-color:#408000 ;
+}
+.end{
+  font-size: 20px;
+  font-weight: 300 ;
+  color: #000099;
+  background-color:#b3b3b3 ;
+}
+table{
+  width: 1000px;
+  height: auto;
+/*  border: solid 1px;*/
+  text-align: center;
+}
+td{
+   /*border: solid 1px;*/
+   padding: 10px;
+   font-size: 28px;
+   font-weight: 300px;
+   color: #000099;
+}

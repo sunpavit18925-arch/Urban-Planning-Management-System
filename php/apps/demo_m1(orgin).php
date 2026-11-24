@@ -1,0 +1,212 @@
+<?php
+    include '../js/function_db.php';
+	session_name('tutorial');
+    session_start();
+    //echo $_SESSION['intra_czid'];
+
+    ?>
+
+    <div class="col-12">
+		<h2 class="hidden-xs hidden-sm GHfont" style="font-family: Kanit;text-align:center">แผนการบำรุงรักษา 5 ปี</h2>
+		<h4 class="hidden-md hidden-lg GHfontmini" style="font-family: Kanit;text-align:center">แผนการบำรุงรักษา 5 ปี</h4>
+	</div>	
+	  <?php $sql = "SELECT COUNT(eqm_id) FROM tb_equipment ";
+        $result = selectSql($sql);
+        foreach ($result as $row){} ?>
+
+
+
+
+
+
+&nbsp;
+
+<div style="background-color:white">
+<table class="tablex table-bordered " style="font-size:12px">
+  <thead>
+    <tr style="background-color: #00a65a;color:white">
+      <th class="centre" scope="col">ลำดับ</th>
+      <th style="text-align:center"  scope="col">รายการระบบและอุปกรณ์</th>
+      <th style="text-align:center"  scope="col">ราคาในการจัดซื้อ</th>
+	  <th style="text-align:center"  scope="col">ปีที่จัดซื้อ</th>
+	  <th style="text-align:center"  scope="col">ปีที่จัดซื้อทดแทน</th>
+      <th style="text-align:center" scope="col">MA ต่อปี</th>
+      <th style="text-align:center"  scope="col">2565</th>
+      <th style="text-align:center"  scope="col">2566</th>
+      <th style="text-align:center"  scope="col">2567</th>
+	  <th style="text-align:center"  scope="col">2568</th>
+      <th style="text-align:center"  scope="col">2569</th>
+      <th style="text-align:center"  scope="col">2570</th>
+	  <th style="text-align:center"  scope="col">หมายเหตุ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+        $n = 0;
+        $sql = "SELECT * FROM tb_equipment ORDER BY eqm_id ASC ";
+        $result = selectSql($sql);
+
+        foreach ($result as $row){ 
+		$n++;
+		?>
+
+    <tr class="trcolor">
+      <th style="text-align:center;" scope="row"><?php echo $n; ?></th>
+	  <td><?php echo $row['eqm_name']; ?></td>
+	  <td style="text-align:center"><?php echo number_format($row['eqm_price']); ?></td>
+	  <td style="text-align:center"><?php echo $row['eqm_buy']; ?></td>
+	  <td style="text-align:center"><?php if($row['eqm_rebuy'] == 9999){ echo "-"; }else{ echo $row['eqm_rebuy']; }?></td>
+	  <td style="text-align:center"><?php echo number_format($row['eqm_ma']); ?></td>
+	  <?php 
+		$year = 2565;
+		$cony = $row['eqm_rebuy'] - $year;
+	  if($cony == 0){
+		  echo '<td style="text-align:center" colspan="6"> จัดหาทดแทน </td>';
+		  $year++;
+		  $cony =$row['eqm_rebuy'] - $year;
+	  }
+	  elseif($cony > 0){
+		  echo '<td style="text-align:center" >',number_format($row['eqm_ma']),'</td>';
+		  $year++;
+		  $cony =$row['eqm_rebuy'] - $year;
+	  }
+	  
+	  
+	  //-2566-//
+	  if($cony == 0){
+		  echo '<td style="text-align:center" colspan="5"> จัดหาทดแทน </td>';
+		  $year++;
+		  $cony =$row['eqm_rebuy'] - $year;
+	  }
+	  elseif($cony > 0){
+		  echo '<td style="text-align:center" >',number_format($row['eqm_ma']),'</td>';
+		  $year++;
+		  $cony =$row['eqm_rebuy'] - $year;
+	  }
+	  else{
+		  
+	  }
+	  
+	  
+	  //-2567-//
+	  if($cony == 0){
+		  echo '<td style="text-align:center" colspan="4"> จัดหาทดแทน </td>';
+		   $year++;
+		   $cony =$row['eqm_rebuy'] - $year;
+	  }
+	  elseif($cony > 0){
+		  echo '<td style="text-align:center" >',number_format($row['eqm_ma']),'</td>';
+		  $year++;
+		  $cony =$row['eqm_rebuy'] - $year;
+	  }
+	  else{
+		  
+	  }
+	  
+	  //-2568-//
+	  if($cony == 0){
+		  echo '<td style="text-align:center" colspan="3"> จัดหาทดแทน </td>';
+		  $year++;
+		  $cony =$row['eqm_rebuy'] - $year;
+	  }
+	  elseif($cony > 0){
+		  echo '<td style="text-align:center" >',number_format($row['eqm_ma']),'</td>';
+		  $year++;
+		  $cony =$row['eqm_rebuy'] - $year;
+	  }
+	  else{
+		  
+	  }
+	  
+	  //-2569-//
+	  if($cony == 0){
+		  echo '<td style="text-align:center" colspan="2"> จัดหาทดแทน </td>';
+		  $year++;
+		  $cony =$row['eqm_rebuy'] - $year;
+	  }
+	  elseif($cony > 0){
+		  echo '<td style="text-align:center" >',number_format($row['eqm_ma']),'</td>';
+		  $year++;
+		  $cony =$row['eqm_rebuy'] - $year;
+	  }
+	  else{
+		  
+	  }	  
+	  
+	  
+	  //-2570-//
+	  if($cony == 0){
+		  echo '<td style="text-align:center" > จัดหาทดแทน </td>';
+		  $year++;
+		  $cony =$row['eqm_rebuy'] - $year;
+	  }
+	  elseif($cony > 0){
+		  echo '<td style="text-align:center" >',number_format($row['eqm_ma']),'</td>';
+	  }
+	  else{
+		  
+	  }	 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	 ?>
+	 <td style="text-align:center" > - </td>
+
+      </tr>
+  <?php } ?>
+  	  <tr>
+	  <?php ?>
+		<td style="text-align:center" colspan="6">ราคาบำรุงรักษาต่อปี</td>
+		<td style="text-align:center">
+			<?php
+			$sql = "SELECT SUM(eqm_ma) FROM tb_equipment WHERE eqm_rebuy > 2565";
+			$result = selectSql($sql);
+			echo number_format($result[0]['SUM(eqm_ma)']);
+			?>
+		</td>
+		<td style="text-align:center">
+			<?php
+			$sql = "SELECT SUM(eqm_ma) FROM tb_equipment WHERE eqm_rebuy > 2566";
+			$result = selectSql($sql);
+			echo number_format($result[0]['SUM(eqm_ma)']);
+			?>
+		</td>
+		<td style="text-align:center">
+			<?php
+			$sql = "SELECT SUM(eqm_ma) FROM tb_equipment WHERE eqm_rebuy > 2567";
+			$result = selectSql($sql);
+			echo number_format($result[0]['SUM(eqm_ma)']);
+			?>
+		</td>
+		<td style="text-align:center">
+			<?php
+			$sql = "SELECT SUM(eqm_ma) FROM tb_equipment WHERE eqm_rebuy > 2568";
+			$result = selectSql($sql);
+			echo number_format($result[0]['SUM(eqm_ma)']);
+			?>
+		</td>
+		<td style="text-align:center">
+			<?php
+			$sql = "SELECT SUM(eqm_ma) FROM tb_equipment WHERE eqm_rebuy > 2569";
+			$result = selectSql($sql);
+			echo number_format($result[0]['SUM(eqm_ma)']);
+			?>
+		</td>
+		<td style="text-align:center">
+			<?php
+			$sql = "SELECT SUM(eqm_ma) FROM tb_equipment WHERE eqm_rebuy > 2570";
+			$result = selectSql($sql);
+			echo number_format($result[0]['SUM(eqm_ma)']);
+			?>
+		</td>
+		<td style="text-align:center">-</td>
+	  </tr>
+  </tbody>
+  </table>
+ 

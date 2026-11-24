@@ -1,8 +1,8 @@
-node_modules/
-client/node_modules/
-server/node_modules/
-client/dist/
-server/dist/
-.qa/
-*.tsbuildinfo
-.tmp/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+/php/*.sqlite*
+/php/*.sql
+/php/img/cityplan/*
+!/php/img/cityplan/.gitkeep

@@ -1,0 +1,13 @@
+html,body{
+	background-color:transparent!important;
+	font-family:Kanit;
+}
+body{
+	height:fit-content;
+}
+thead > tr >th {
+	background-color: #295DBD !important;
+	color:white !important;
+	text-align:center !important;
+
+}
